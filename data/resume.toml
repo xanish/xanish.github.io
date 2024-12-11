@@ -27,6 +27,10 @@ technical_skills = [
     "Grafana",
 ]
 
+[contact]
+github = "https://github.com/xanish"
+linkedin = "https://www.linkedin.com/in/danish-ali-furniturewala/"
+
 [[experiences]]
 title = "Senior Module Lead"
 company = "Media.net - Programmatic Advertising"
@@ -232,10 +236,11 @@ startDate = "Aug 2024"
 endDate = "Ongoing"
 details = [
     "A simple and light-weight BitTorrent client.",
-    "Support for single and multi-file torrent downloads, magnet links downloads."
+    "Supports single and multi-file torrent as well as magnet links downloads."
 ]
 technical_skills = [
     "Go",
+    "BitTorrent Specifications",
 ]
 
 [[projects]]
