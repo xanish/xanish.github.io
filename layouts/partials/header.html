@@ -3,7 +3,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>{{ .Title }} | {{ .Site.Title }}</title>
+<title>
+    {{ if .IsHome }}
+        Danish Ali Furniturewala |
+    {{ else }}
+        {{ if .Title }}{{ .Title }} | {{ end }}
+    {{ end }}
+    {{ .Site.Title }}
+</title>
 
 {{ $styles := resources.Get "/css/styles.css"  }}
 {{ if eq .Site.Params.hugo_env "development" }}
