@@ -4,7 +4,9 @@
   "main": "tailwind.config.js",
   "scripts": {
     "watch:css": "npx tailwind -i assets/css/raw.css -o assets/css/styles.css --watch",
-    "build:css": "npx tailwind -i assets/css/raw.css -o assets/css/styles.css"
+    "build:css": "npx tailwind -i assets/css/raw.css -o assets/css/styles.css",
+    "publish": "gh-pages -d public",
+    "build:site": "npm run build:css && hugo build && npm run publish"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +14,7 @@
   "description": "",
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "gh-pages": "^6.2.0",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.1.0",
