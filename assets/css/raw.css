@@ -3,3 +3,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    @apply bg-stone-900;
+}
+::-webkit-scrollbar-thumb {
+    @apply bg-stone-400;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-stone-300;
+}
+::-webkit-scrollbar-corner {
+    @apply bg-stone-900;
+}
