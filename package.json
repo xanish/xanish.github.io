@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "tailwind.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch:css": "npx tailwind -i assets/css/raw.css -o assets/css/styles.css --watch",
+    "build:css": "npx tailwind -i assets/css/raw.css -o assets/css/styles.css"
   },
   "keywords": [],
   "author": "",
