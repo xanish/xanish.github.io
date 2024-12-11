@@ -3,13 +3,13 @@
 <head>
     {{ partial "header.html" . }}
 </head>
-<body class="container max-w-screen-md mx-auto bg-black text-stone-400 font-body">
+<body class="container max-w-screen-md mx-auto bg-black text-stone-400 font-body px-6">
 {{ partial "nav.html" . }}
 
 <main class="text-justify">
     <section class="mb-10">
-        <h1 class="text-3xl font-semibold text-stone-200 font-heading">{{ .Site.Data.resume.name }}</h1>
-        <h2 class="text-xl font-semibold text-stone-400 font-heading">{{ .Site.Data.resume.title }}</h2>
+        <h1 class="text-3xl font-semibold text-stone-200 font-heading text-left">{{ .Site.Data.resume.name }}</h1>
+        <h2 class="text-xl font-semibold text-stone-400 font-heading text-left">{{ .Site.Data.resume.title }}</h2>
         <ul class="flex space-x-4 text-gray-400">
             <li>
                 <a href="{{ .Site.Data.resume.contact.github }}" target="_blank" class="hover:text-slate-100 hover:underline">
