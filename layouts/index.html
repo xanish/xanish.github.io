@@ -53,12 +53,12 @@
         <h2 class="mb-6 text-xl font-bold text-stone-200 font-heading">My Journey So Far</h2>
 
         {{ range .Site.Data.resume.experiences }}
-        <div class="flex mb-6">
-            <div class="w-1/4">
+        <div class="flex flex-col sm:flex-row mb-6">
+            <div class="xl:w-1/4 sm:w-full mb-2">
                 <h4 class="text-stone-200 text-sm uppercase font-heading">{{ .startDate }} - {{ .endDate }}</h4>
             </div>
 
-            <div class="w-3/4">
+            <div class="xl:w-3/4 sm:w-full">
                 <article>
                     <header class="mb-2">
                         <h3 class="font-semibold text-stone-100 font-heading">{{ .title }}</h3>
@@ -86,12 +86,12 @@
         <h2 class="mb-6 text-xl font-bold text-stone-200 font-heading">Publications</h2>
 
         {{ range .Site.Data.resume.publications }}
-        <div class="flex mb-6">
-            <div class="w-1/4">
+        <div class="flex flex-col sm:flex-row mb-6">
+            <div class="xl:w-1/4 sm:w-full mb-2">
                 <h4 class="text-stone-200 text-sm uppercase font-heading">{{ .startDate }} - {{ .endDate }}</h4>
             </div>
 
-            <div class="w-3/4">
+            <div class="xl:w-3/4 sm:w-full">
                 <article>
                     <header class="mb-2">
                         <h3 class="font-semibold text-stone-100 font-heading">
@@ -128,12 +128,12 @@
         <h2 class="mb-6 text-xl font-bold text-stone-200 font-heading">Personal Projects</h2>
 
         {{ range .Site.Data.resume.projects }}
-        <div class="flex mb-6">
-            <div class="w-1/4">
+        <div class="flex flex-col sm:flex-row mb-6">
+            <div class="xl:w-1/4 sm:w-full mb-2">
                 <h4 class="text-stone-200 text-sm uppercase font-heading">{{ .startDate }} - {{ .endDate }}</h4>
             </div>
 
-            <div class="w-3/4">
+            <div class="xl:w-3/4 sm:w-full">
                 <article>
                     <header class="mb-2">
                         <h3 class="font-semibold text-stone-100 font-heading">
