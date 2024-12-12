@@ -1,21 +1,15 @@
-<meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<header>
+    <nav class="flex items-center justify-between py-6 mb-6">
+        <a href="/" class="hover:animate-pulse text-stone-400">
+            <svg class="h-8 w-8 hover:text-stone-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+        </a>
 
-<title>
-    {{ if .IsHome }}
-        Danish Ali Furniturewala |
-    {{ else }}
-        {{ if .Title }}{{ .Title }} | {{ end }}
-    {{ end }}
-    {{ .Site.Title }}
-</title>
-
-{{ $styles := resources.Get "/css/styles.css"  }}
-{{ if eq .Site.Params.hugo_env "development" }}
-<link rel="stylesheet" href="{{ $styles.RelPermalink }}"/>
-{{ else }}
-{{ $styles := $styles | minify   }}
-<link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
-{{ end }}
+        <ul class="flex">
+            {{ range .Site.Menus.main }}
+            <li class="ml-6 hover:underline hover:text-stone-100"><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+        </ul>
+    </nav>
+</header>
