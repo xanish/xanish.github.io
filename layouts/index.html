@@ -3,18 +3,18 @@
 <head>
     {{ partial "head.html" . }}
 </head>
-<body class="container max-w-screen-md mx-auto bg-black text-stone-400 font-body px-6">
+<body>
 {{ partial "header.html" . }}
 
-<main class="text-justify">
+<main>
     <section class="mb-10">
-        <h1 class="text-3xl font-semibold text-stone-200 font-heading text-left">{{ .Site.Data.resume.name }}</h1>
-        <h2 class="text-xl font-semibold text-stone-400 font-heading text-left">{{ .Site.Data.resume.title }}</h2>
-        <ul class="flex space-x-4 text-gray-400">
+        <h1>{{ .Site.Data.resume.name }}</h1>
+        <h2 class="text-stone-400">{{ .Site.Data.resume.title }}</h2>
+        <ul class="flex space-x-4">
             <li>
-                <a href="{{ .Site.Data.resume.contact.github }}" target="_blank" class="hover:text-slate-100 hover:underline">
+                <a href="{{ .Site.Data.resume.contact.github }}" target="_blank">
                     GitHub
-                    <svg class="h-4 w-4 text-stone-400 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="h-4 w-4 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z"/>
                         <line x1="17" y1="7" x2="7" y2="17" />
                         <polyline points="8 7 17 7 17 16" />
@@ -22,9 +22,9 @@
                 </a>
             </li>
             <li>
-                <a href="{{ .Site.Data.resume.contact.linkedin }}" target="_blank" class="hover:text-slate-100 hover:underline">
+                <a href="{{ .Site.Data.resume.contact.linkedin }}" target="_blank">
                     LinkedIn
-                    <svg class="h-4 w-4 text-stone-400 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="h-4 w-4 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z"/>
                         <line x1="17" y1="7" x2="7" y2="17" />
                         <polyline points="8 7 17 7 17 16" />
@@ -35,34 +35,34 @@
     </section>
 
     <section class="mb-10">
-        <h2 class="mb-6 text-xl font-bold text-stone-200 font-heading">Something About Me</h2>
+        <h2 class="mb-6">Something About Me</h2>
         <p>{{ .Site.Data.resume.about }}</p>
     </section>
 
     <section class="mb-10">
-        <h2 class="mb-6 text-xl font-bold text-stone-200 font-heading">Technical Skills</h2>
+        <h2 class="mb-6">Technical Skills</h2>
 
         <ul class="flex flex-wrap items-center">
             {{ range .Site.Data.resume.technical_skills }}
-            <li class="bg-black/50 rounded-lg px-3 py-1 m-1 text-sm font-semibold text-stone-400 border border-stone-500">{{ . }}</li>
+            <li class="tag">{{ . }}</li>
             {{ end }}
         </ul>
     </section>
 
     <section class="mb-10">
-        <h2 class="mb-6 text-xl font-bold text-stone-200 font-heading">My Journey So Far</h2>
+        <h2 class="mb-6">My Journey So Far</h2>
 
         {{ range .Site.Data.resume.experiences }}
         <div class="flex flex-col sm:flex-row mb-6">
             <div class="xl:w-1/4 sm:w-full mb-2">
-                <h4 class="text-stone-200 text-sm uppercase font-heading">{{ .startDate }} - {{ .endDate }}</h4>
+                <h4 class="text-stone-200 text-sm uppercase">{{ .startDate }} - {{ .endDate }}</h4>
             </div>
 
             <div class="xl:w-3/4 sm:w-full">
                 <article>
                     <header class="mb-2">
-                        <h3 class="font-semibold text-stone-100 font-heading">{{ .title }}</h3>
-                        <h4 class="text-stone-300 font-heading">{{ .company }}</h4>
+                        <h3 class="text-stone-100">{{ .title }}</h3>
+                        <h4 class="font-normal text-stone-300">{{ .company }}</h4>
                     </header>
 
                     <ul>
@@ -73,7 +73,7 @@
 
                     <ul class="flex flex-wrap mt-2">
                         {{ range .technical_skills }}
-                        <li class="bg-black/50 rounded-lg px-3 py-1 m-1 text-sm font-semibold text-stone-400 border border-stone-500">{{ . }}</li>
+                        <li class="tag">{{ . }}</li>
                         {{ end }}
                     </ul>
                 </article>
@@ -83,28 +83,28 @@
     </section>
 
     <section class="mb-10">
-        <h2 class="mb-6 text-xl font-bold text-stone-200 font-heading">Publications</h2>
+        <h2 class="mb-6">Publications</h2>
 
         {{ range .Site.Data.resume.publications }}
         <div class="flex flex-col sm:flex-row mb-6">
             <div class="xl:w-1/4 sm:w-full mb-2">
-                <h4 class="text-stone-200 text-sm uppercase font-heading">{{ .startDate }} - {{ .endDate }}</h4>
+                <h4 class="text-stone-200 text-sm uppercase">{{ .startDate }} - {{ .endDate }}</h4>
             </div>
 
             <div class="xl:w-3/4 sm:w-full">
                 <article>
                     <header class="mb-2">
-                        <h3 class="font-semibold text-stone-100 font-heading">
-                            <a target="_blank" href="{{ .link }}" class="hover:underline">
+                        <h3 class="text-stone-100">
+                            <a target="_blank" href="{{ .link }}">
                                 {{ .title }}
-                                <svg class="h-4 w-4 text-stone-400 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="h-4 w-4 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z"/>
                                     <line x1="17" y1="7" x2="7" y2="17" />
                                     <polyline points="8 7 17 7 17 16" />
                                 </svg>
                             </a>
                         </h3>
-                        <h4 class="text-stone-300 font-heading">{{ .journal }}</h4>
+                        <h4 class="font-normal text-stone-300">{{ .journal }}</h4>
                     </header>
 
                     <ul>
@@ -115,7 +115,7 @@
 
                     <ul class="flex flex-wrap mt-2">
                         {{ range .technical_skills }}
-                        <li class="bg-black/50 rounded-lg px-3 py-1 m-1 text-sm font-semibold text-stone-400 border border-stone-500">{{ . }}</li>
+                        <li class="tag">{{ . }}</li>
                         {{ end }}
                     </ul>
                 </article>
@@ -125,21 +125,21 @@
     </section>
 
     <section class="mb-10">
-        <h2 class="mb-6 text-xl font-bold text-stone-200 font-heading">Personal Projects</h2>
+        <h2 class="mb-6">Personal Projects</h2>
 
         {{ range .Site.Data.resume.projects }}
         <div class="flex flex-col sm:flex-row mb-6">
             <div class="xl:w-1/4 sm:w-full mb-2">
-                <h4 class="text-stone-200 text-sm uppercase font-heading">{{ .startDate }} - {{ .endDate }}</h4>
+                <h4 class="text-sm uppercase">{{ .startDate }} - {{ .endDate }}</h4>
             </div>
 
             <div class="xl:w-3/4 sm:w-full">
                 <article>
                     <header class="mb-2">
-                        <h3 class="font-semibold text-stone-100 font-heading">
-                            <a target="_blank" href="{{ .link }}" class="hover:underline">
+                        <h3 class="text-stone-100">
+                            <a target="_blank" href="{{ .link }}">
                                 {{ .title }}
-                                <svg class="h-4 w-4 text-stone-400 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="h-4 w-4 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z"/>
                                     <line x1="17" y1="7" x2="7" y2="17" />
                                     <polyline points="8 7 17 7 17 16" />
@@ -156,13 +156,46 @@
 
                     <ul class="flex flex-wrap mt-2">
                         {{ range .technical_skills }}
-                        <li class="bg-black/50 rounded-lg px-3 py-1 m-1 text-sm font-semibold text-stone-400 border border-stone-500">{{ . }}</li>
+                        <li class="tag">{{ . }}</li>
                         {{ end }}
                     </ul>
                 </article>
             </div>
         </div>
         {{ end }}
+    </section>
+
+    <section class="mb-10">
+        <h2 class="mb-6">Books I've Read Or Reading</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-1 justify-between items-center">
+            {{ range .Site.Data.books.read }}
+            <article class="p-1 {{ if .reading }}border rounded-lg border-stone-400{{ end }}">
+                <a href="{{ .link }}" target="_blank">
+                    <img class="rounded-lg" src="{{ .image }}" alt="{{ .title }}">
+                </a>
+            </article>
+            {{ end }}
+        </div>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="mb-6">Papers I've Read</h2>
+
+        <ul>
+            {{ range .Site.Data.papers.read }}
+            <li>
+                <a href="{{ .link }}" target="_blank">
+                    {{ .title }}
+                    <svg class="h-4 w-4 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"/>
+                        <line x1="17" y1="7" x2="7" y2="17" />
+                        <polyline points="8 7 17 7 17 16" />
+                    </svg>
+                </a>
+            </li>
+            {{ end }}
+        </ul>
     </section>
 </main>
 {{ partial "footer.html" . }}

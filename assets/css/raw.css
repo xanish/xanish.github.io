@@ -7,16 +7,79 @@
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 ::-webkit-scrollbar-track {
     @apply bg-stone-900;
 }
+
 ::-webkit-scrollbar-thumb {
     @apply bg-stone-400;
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     @apply bg-stone-300;
 }
+
 ::-webkit-scrollbar-corner {
     @apply bg-stone-900;
+}
+
+body {
+    @apply container;
+    @apply max-w-screen-md;
+    @apply mx-auto;
+    @apply bg-black;
+    @apply text-stone-400;
+    @apply font-body;
+    @apply px-6;
+}
+
+main {
+    @apply text-justify;
+}
+
+section {
+    @apply mb-10;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+    @apply font-heading;
+    @apply text-left;
+    @apply text-stone-200;
+}
+
+h1 {
+    @apply text-3xl;
+}
+
+h2 {
+    @apply text-xl;
+}
+
+a {
+    @apply hover:text-stone-100;
+    @apply hover:underline;
+}
+
+.tag {
+    @apply bg-black/50;
+    @apply rounded-lg;
+    @apply px-3;
+    @apply py-1;
+    @apply m-1;
+    @apply text-sm;
+    @apply font-semibold;
+    @apply border;
+    @apply border-stone-500;
+}
+
+footer {
+    @apply flex;
+    @apply flex-col;
+    @apply sm:flex-row;
+    @apply xl:items-center;
+    @apply justify-between;
+    @apply py-6;
 }
