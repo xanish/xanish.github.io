@@ -236,8 +236,8 @@ link = "https://github.com/xanish/torrenty"
 startDate = "Aug 2024"
 endDate = "Ongoing"
 details = [
-    "A simple and light-weight BitTorrent client.",
-    "Supports single and multi-file torrent as well as magnet links downloads."
+    "Developing a lightweight BitTorrent client with support for single, multi-file, and magnet link downloads.",
+    "Tackled challenges like ensuring efficient peer-to-peer data exchange and managing metadata parsing for magnet links.",
 ]
 technical_skills = [
     "Go",
@@ -250,8 +250,9 @@ link = "https://github.com/xanish/chirp-ts/tree/angular"
 startDate = "Jun 2023"
 endDate = "Nov 2023"
 details = [
-    "A mini twitter clone made as a reference project for new joinees. Served as a problem statement and a ideal solution for junior developers post their new-hire training.",
-    "SPA with RESTful API, Authentication, Timeline, Retweet, Replies and Comments. Also supported User profiles, Follow/Unfollow, Like/Unlike, Media Tweets and Suggested Follows."
+    "Developed a mini Twitter clone as a reference project for new hires, showcasing an ideal solution for junior developers post-training.",
+    "Built a SPA with a RESTful API, enabling seamless interactions and secure authentication.",
+    "Implemented key features like timeline, retweets, replies, comments, user profiles, follow/unfollowm suggested follows, and media support.",
 ]
 technical_skills = [
     "Node.js",
@@ -268,8 +269,9 @@ link = "https://github.com/xanish/cards-against-humanity"
 startDate = "Oct 2022"
 endDate = "Feb 2023"
 details = [
-    "Simple implementation of the cards against humanity game using node and sockets.",
-    "Supports real-time gameplay, Protected lobby support, Multiple card packs and game customization.",
+    "Built a real-time implementation of the Cards Against Humanity game.",
+    "Overcame challenges such as synchronizing real-time gameplay across clients, implementing protected lobbies, and managing game state for multiple players.",
+    "Features include customizable gameplay and support for multiple card packs.",
 ]
 technical_skills = [
     "Node.js",
