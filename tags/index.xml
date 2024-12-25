@@ -6,6 +6,42 @@
     <description>Recent content in Tags on xanish.dev</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 25 Dec 2024 12:35:16 +0530</lastBuildDate>
     <atom:link href="https://xanish.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apache Kafka</title>
+      <link>https://xanish.github.io/tags/apache-kafka/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>https://xanish.github.io/tags/apache-kafka/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Distributed Systems</title>
+      <link>https://xanish.github.io/tags/distributed-systems/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>https://xanish.github.io/tags/distributed-systems/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Event Streaming</title>
+      <link>https://xanish.github.io/tags/event-streaming/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>https://xanish.github.io/tags/event-streaming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Messaging Systems</title>
+      <link>https://xanish.github.io/tags/messaging-systems/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>https://xanish.github.io/tags/messaging-systems/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research Papers</title>
+      <link>https://xanish.github.io/tags/research-papers/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>https://xanish.github.io/tags/research-papers/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>xanish.dev</title>
-    <link>https://xanish.github.io/</link>
-    <description>Recent content on xanish.dev</description>
+    <title>Research Papers on xanish.dev</title>
+    <link>https://xanish.github.io/categories/research-papers/</link>
+    <description>Recent content in Research Papers on xanish.dev</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 25 Dec 2024 12:35:16 +0530</lastBuildDate>
-    <atom:link href="https://xanish.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xanish.github.io/categories/research-papers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kafka: Unpacking the Backbone of Modern Data Pipelines</title>
       <link>https://xanish.github.io/blog/kafka-unpacking-the-backbone-of-modern-data-pipelines/</link>

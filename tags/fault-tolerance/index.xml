@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fault Tolerance on xanish.dev</title>
+    <link>http://localhost:1313/tags/fault-tolerance/</link>
+    <description>Recent content in Fault Tolerance on xanish.dev</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 25 Dec 2024 12:35:16 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/fault-tolerance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kafka: Unpacking the Backbone of Modern Data Pipelines</title>
+      <link>http://localhost:1313/blog/kafka-unpacking-the-backbone-of-modern-data-pipelines/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>http://localhost:1313/blog/kafka-unpacking-the-backbone-of-modern-data-pipelines/</guid>
+      <description>&lt;p&gt;Introduction&lt;/p&gt;&#xA;&lt;p&gt;These days, apps don’t just run—they learn, adapt, and deliver. From fine-tuning search results to suggesting your next binge-watch, modern applications thrive on a steady diet of activity data. This data powers features like:&lt;/p&gt;&#xA;&lt;p&gt;Smarter search relevance&lt;/p&gt;&#xA;&lt;p&gt;Personalized recommendations&lt;/p&gt;&#xA;&lt;p&gt;Laser-targeted ads&lt;/p&gt;&#xA;&lt;p&gt;Keeping malicious users at bay&lt;/p&gt;&#xA;&lt;p&gt;But here’s the kicker: integrating this data into production pipelines means dealing with a tidal wave of information. Back in the day, people scraped logs manually or relied on basic analytics. Then came distributed log aggregators like Facebook’s Scribe and Cloudera’s Flume, but they were more about offline processing. Enter Kafka—a game-changer that redefined how we handle high-volume data streams.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

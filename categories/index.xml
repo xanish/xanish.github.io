@@ -6,6 +6,21 @@
     <description>Recent content in Categories on xanish.dev</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 25 Dec 2024 12:35:16 +0530</lastBuildDate>
     <atom:link href="https://xanish.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Distributed Systems</title>
+      <link>https://xanish.github.io/categories/distributed-systems/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>https://xanish.github.io/categories/distributed-systems/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research Papers</title>
+      <link>https://xanish.github.io/categories/research-papers/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>https://xanish.github.io/categories/research-papers/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
