@@ -1,0 +1,10 @@
+{{ define "main" }}
+
+{{ range .Data.Pages }}
+<article class="mt-6">
+    <h2 class="m-0"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    <p>{{ .Date | time.Format "January 2, 2006" }}</p>
+</article>
+{{ end }}
+
+{{ end }}

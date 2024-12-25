@@ -83,3 +83,28 @@ footer {
     @apply justify-between;
     @apply py-6;
 }
+
+.blog-content {
+    @apply mt-7;
+}
+
+.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content h5, .blog-content h6 {
+    @apply mt-7;
+    @apply mb-5;
+}
+
+.blog-content p {
+    @apply mb-3;
+}
+
+.blog-content ul {
+    @apply mb-3;
+    @apply list-disc;
+    @apply ms-6;
+}
+
+.blog-content ol {
+    @apply mb-3;
+    @apply list-decimal;
+    @apply ms-6;
+}
