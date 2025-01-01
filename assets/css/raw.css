@@ -6,6 +6,7 @@
 
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -107,4 +108,16 @@ footer {
     @apply mb-3;
     @apply list-decimal;
     @apply ms-6;
+}
+
+.blog-content pre {
+    @apply !bg-stone-950;
+    @apply p-4;
+    @apply mb-4;
+    @apply rounded-lg;
+    @apply overflow-x-auto;
+}
+
+.blog-content a {
+    @apply underline;
 }

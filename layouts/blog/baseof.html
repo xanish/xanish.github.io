@@ -7,6 +7,10 @@
 {{ partial "header.html" . }}
 
 <main class="text-justify">
+    {{ if .Param "math" }}
+    {{ partialCached "math.html" . }}
+    {{ end }}
+
     {{ block "main" . }}{{ end }}
 </main>
 

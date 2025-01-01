@@ -3,6 +3,18 @@ languageCode = "en-us"
 title = "xanish.dev"
 enableEmoji = true
 
+[markup]
+[markup.goldmark]
+[markup.goldmark.extensions]
+[markup.goldmark.extensions.passthrough]
+enable = true
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [['\[', '\]'], ['$$', '$$']]
+inline = [['\(', '\)']]
+
+[params]
+math = false
+
 [[menu.main]]
 name = "Blog"
 url = "/blog/"
