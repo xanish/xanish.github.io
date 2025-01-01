@@ -2,10 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://xanish.github.io/tags/apache-kafka/</loc>
-    <lastmod>2024-12-25T12:35:16+05:30</lastmod>
-  </url><url>
     <loc>https://xanish.github.io/blog/</loc>
+    <lastmod>2025-01-01T19:27:17+05:30</lastmod>
+  </url><url>
+    <loc>https://xanish.github.io/blog/understanding-bloom-filters-a-simple-guide/</loc>
+    <lastmod>2025-01-01T19:27:17+05:30</lastmod>
+  </url><url>
+    <loc>https://xanish.github.io/</loc>
+    <lastmod>2025-01-01T19:27:17+05:30</lastmod>
+  </url><url>
+    <loc>https://xanish.github.io/tags/apache-kafka/</loc>
     <lastmod>2024-12-25T12:35:16+05:30</lastmod>
   </url><url>
     <loc>https://xanish.github.io/categories/</loc>
@@ -33,9 +39,6 @@
     <lastmod>2024-12-25T12:35:16+05:30</lastmod>
   </url><url>
     <loc>https://xanish.github.io/tags/</loc>
-    <lastmod>2024-12-25T12:35:16+05:30</lastmod>
-  </url><url>
-    <loc>https://xanish.github.io/</loc>
     <lastmod>2024-12-25T12:35:16+05:30</lastmod>
   </url>
 </urlset>

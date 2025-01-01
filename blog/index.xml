@@ -6,8 +6,15 @@
     <description>Recent content in Blogs on xanish.dev</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Dec 2024 12:35:16 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2025 19:27:17 +0530</lastBuildDate>
     <atom:link href="https://xanish.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding Bloom Filters: A Simple Guide</title>
+      <link>https://xanish.github.io/blog/understanding-bloom-filters-a-simple-guide/</link>
+      <pubDate>Wed, 01 Jan 2025 19:27:17 +0530</pubDate>
+      <guid>https://xanish.github.io/blog/understanding-bloom-filters-a-simple-guide/</guid>
+      <description>&lt;p&gt;When dealing with large databases verifying whether an item belongs to a collection can be a slow and tedious process. Common data structures like hash tables, trees, and arrays can be slow or memory-intensive when you&amp;rsquo;re dealing with millions or billions of elements. This is where a Bloom Filter can help. It offers a faster and more memory-efficient approach than the aforementioned datasets, with some caveats.&lt;/p&gt;&#xA;&lt;p&gt;In this post, we will learn what Bloom Filters are, how they work, and how we can optimize them for our use. We will also see a simple implementation of the same in Go!&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Kafka: Unpacking the Backbone of Modern Data Pipelines</title>
       <link>https://xanish.github.io/blog/kafka-unpacking-the-backbone-of-modern-data-pipelines/</link>
