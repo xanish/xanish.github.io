@@ -5,14 +5,17 @@ date = 2024-12-25T12:35:16+05:30
 draft = false
 tags = [
     "Apache Kafka",
+    "Data Pipelines",
     "Distributed Systems",
-    "Research Papers",
     "Event Streaming",
     "Messaging Systems",
 ]
 categories = [
-    "Research Papers",
+    "Backend Development",
+    "Data Engineering",
     "Distributed Systems",
+    "Research Papers",
+    "System Design",
 ]
 +++
 These days, apps don’t just run—they learn, adapt, and deliver. From fine-tuning search results to suggesting your next binge-watch, modern applications thrive on a steady diet of activity data. This data powers features like:

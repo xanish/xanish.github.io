@@ -3,6 +3,17 @@ title = "Understanding Bloom Filters: A Simple Guide"
 description = "Discover Bloom Filters: The surprisingly simple, memory-efficient way to speed up checks in large datasets. Learn how they work, manage false positives, and see a Go example."
 date = 2025-01-01T19:27:17+05:30
 draft = false
+tags = [
+    "Bloom Filter",
+    "Go",
+    "Hashing",
+    "Performance",
+]
+categories = [
+    "Backend Development",
+    "Data Structures",
+    "System Design",
+]
 [params]
 math = true
 +++
