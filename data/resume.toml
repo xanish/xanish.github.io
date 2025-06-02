@@ -1,31 +1,50 @@
 name = "Danish Ali Furniturewala"
 title = "Senior Module Lead"
-about = "I'm a seasoned software engineer with 7 years of experience in crafting scalable, high-performance systems. While I thrive in backend development, I also love owning systems from end-to-end—designing robust APIs, building microservices architectures, developing responsive UIs, and ensuring every part of the system works seamlessly together. My passion lies in solving complex technical challenges and delivering innovative solutions. I'm committed to continuous learning, staying updated with industry trends, and mentoring junior engineers. Currently, I'm focused on mastering Go and cloud-native architectures to build impactful systems. Beyond coding, I enjoy staying active, reading manga, or enjoying the latest anime and movies with friends (often accompanied by good food and some friendly banter)."
+about = "I'm a seasoned software engineer with over 7 years of experience in crafting scalable, high-performance systems. While I thrive in backend development, I also love owning systems from end-to-end—designing robust APIs, building microservices architectures, developing responsive UIs, and ensuring every part of the system works seamlessly together. My passion lies in solving complex technical challenges and delivering innovative solutions. I'm committed to continuous learning, staying updated with industry trends, and mentoring junior engineers. Currently, I'm focused on mastering Go and cloud-native architectures to build impactful systems as well as being in a love hate relationship with AI coding tools (Looking at your Cursor). Beyond coding, I enjoy staying active, reading manga, or enjoying the latest anime and movies with friends (often accompanied by good food and some friendly banter)."
 technical_skills = [
     "Go",
-    "Python",
-    "PHP",
+    "Node.js",
     "JavaScript",
     "TypeScript",
+    "PHP",
+    "Python",
     "Java",
-    "Node.js",
     "Express",
     "Laravel",
     "Angular",
+    "Spring Boot",
+    "React",
+    "Svelte",
+    "jQuery",
+    "CSS",
+    "Tailwind",
+    "Node-RED",
     "MySQL",
-    "PostgreSQL",
     "SQL Server",
-    "MongoDB",
+    "PostgreSQL",
     "Redis",
-    "AWS",
-    "Docker",
-    "ArgoCD",
-    "Nomad",
-    "Jenkins",
-    "Kafka",
     "RabbitMQ",
+    "Kafka",
+    "MongoDB",
     "Elasticsearch",
+    "Git",
+    "GitHub",
+    "GitLab",
+    "Docker",
+    "Jenkins",
     "Grafana",
+    "AWS",
+    "ArgoCD",
+    "Kubernetes",
+    "Nomad",
+    "Vault",
+    "REST APIs",
+    "Event Driven Architecture",
+    "Microservices",
+    "Low Level Design",
+    "System Design",
+    "Single Sign-On",
+    "SAML",
 ]
 
 [contact]
@@ -38,16 +57,21 @@ company = "Media.net - Programmatic Advertising"
 startDate = "Sept 2024"
 endDate = "Present"
 responsibilities = [
-    "Currently developing an intelligent recommender system using Gemini, ChatGPT, and Ollama models to enhance user targeting. The system combines insights from LLMs with in-house data and machine learning algorithms to provide data-driven recommendations aimed at improving ad targeting and thereby overall campaign performance.",
-    "Developed a microservice to implement role-based access control for all public customer interfaces, optimised response times to sub 50ms latencies, to allow for rapid UI rendering. Incorporated automated unit and integration tests to validate functionality and ensure system reliability.",
+    "Currently working on a B2B SaaS platform uses cutting-edge AI to instantly transform static site content into dynamic, monetizable videos that we believe will skyrocket engagement and ad revenue. I handle the heavy lifting—from AI video creation and review to smart playlist creation—all while pioneering my frontend development with AI tools like Cursor.",
+	"Developed a simple recommender system using Gemini, ChatGPT, and Ollama models to enhance user targeting. The system combines insights from LLMs with in-house data to provide data-driven recommendations aimed at improving ad targeting.",
+	"Developed a microservice to implement role-based access control for all public customer interfaces, optimised response times to sub 50ms latencies, to allow for rapid UI rendering. Incorporated automated unit and integration tests to validate functionality and ensure system reliability.",
 ]
 technical_skills = [
-    "Go",
-    "Python",
-    "MySQL",
-    "Redis",
-    "Docker",
-    "Nomad",
+	"Go",
+	"Python",
+	"React",
+	"Node.js",
+	"Express",
+	"MySQL",
+	"Redis",
+	"Docker",
+	"Nomad",
+	"Vault",
 ]
 
 [[experiences]]
@@ -71,6 +95,7 @@ technical_skills = [
     "Grafana",
     "Docker",
     "ArgoCD",
+    "Vault",
 ]
 
 [[experiences]]
@@ -92,6 +117,7 @@ technical_skills = [
     "MySQL",
     "Redis",
     "Docker",
+    "Vault",
 ]
 
 [[experiences]]
@@ -110,8 +136,9 @@ technical_skills = [
     "JavaScript",
     "SQL Server",
     "SAML",
-    "SSO",
+    "Single Sign-On",
     "Docker",
+    "Vault",
 ]
 
 [[experiences]]
@@ -147,7 +174,6 @@ responsibilities = [
 technical_skills = [
     "PHP",
     "Laravel",
-    "REST APIs",
     "Kafka",
     "Redis",
     "MySQL",
@@ -184,11 +210,11 @@ technical_skills = [
     "Node.js",
     "Node-RED",
     "MongoDB",
+    "AWS",
+    "Facebook Messenger",
     "Microsoft Bot Framework",
     "Microsoft LUIS",
     "API.ai",
-    "AWS",
-    "Facebook Messenger",
 ]
 
 [[experiences]]
