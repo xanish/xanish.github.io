@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,10 +12,12 @@
     xanish.dev
 </title>
 
-<link rel="stylesheet" href="/css/styles.min.450ebacc45311ec65f6a4b8b6a7c5205e8fa5e25655f8d5ee640ab1e7ab43175.css" integrity="sha256-RQ66zEUxHsZfakuLanxSBej6XiVlX41e5kCrHnq0MXU=" crossorigin="anonymous">
-</head>
-<body class="container max-w-screen-md mx-auto bg-black text-stone-400 font-body px-6">
-<header>
+<link rel="stylesheet" href="/css/styles.min.c5c985018df075cc9f153599b0cc4f84c4862c92ed70d73aa0b28622256af872.css" integrity="sha256-xcmFAY3wdcyfFTWZsMxPhMSGLJLtcNc6oLKGIiVq&#43;HI=" crossorigin="anonymous">
+    </head>
+    <body
+        class="container max-w-screen-md mx-auto bg-black text-stone-400 font-body px-6 min-h-[100vh] flex flex-col"
+    >
+        <header>
     <nav class="flex items-center justify-between py-6 mb-6">
         <a href="/" class="hover:animate-pulse">
             <svg class="h-8 w-8 hover:text-stone-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -31,9 +33,8 @@
     </nav>
 </header>
 
-<main class="text-justify">
-    
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <main class="text-justify flex-grow">
+             <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <script>
     MathJax = {
         tex: {
@@ -41,10 +42,8 @@
             inlineMath: [['\\(', '\\)']]                  
         }
     };
-</script>
-    
-
-    
+</script> 
+            
   <h1>Understanding Bloom Filters: A Simple Guide</h1>
 
   
@@ -52,69 +51,124 @@
   <time datetime="2025-01-01T19:27:17&#43;05:30">January 1, 2025</time>
 
   <div class="blog-content">
-    <p>When dealing with large databases verifying whether an item belongs to a collection can be a slow and tedious process. Common data structures like hash tables, trees, and arrays can be slow or memory-intensive when you&rsquo;re dealing with millions or billions of elements. This is where a Bloom Filter can help. It offers a faster and more memory-efficient approach than the aforementioned datasets, with some caveats.</p>
-<p>In this post, we will learn what Bloom Filters are, how they work, and how we can optimize them for our use. We will also see a simple implementation of the same in Go!</p>
+    <p>When dealing with large databases, verifying whether an item belongs to a collection can be a slow and tedious process. Common data structures like hash tables, trees, and arrays can be slow or memory-intensive, especially when you’re dealing with millions or billions of elements. This is where a Bloom Filter can help. It offers a significantly more memory-efficient approach and can be faster, particularly when its use prevents more costly operations like disk I/O. However, this comes with some interesting caveats.</p>
+<p>In this post, we will learn what Bloom Filters are, how they work, and how we can optimize them for our use. We will also see an improved implementation of the same in Go!</p>
 <h2 id="what-is-a-bloom-filter">What is a bloom filter?</h2>
-<p>A Bloom Filter is a probabilistic data structure used to check if an element is <strong>possibly</strong> in a set or <strong>definitely not</strong> in a set. It is extremely efficient in terms of speed and memory usage. But the catch is that sometimes it can cause <strong>false positives</strong>.</p>
-<p><strong>False positives</strong> occur when the filter says something is in the set. Even if this isn&rsquo;t the case. But if the filter says there is no element You can be 100% sure that there are no such elements.</p>
+<p>A Bloom Filter is a probabilistic data structure used to check if an element is <strong>possibly</strong> in a set or <strong>definitely not</strong> in a set. It is extremely efficient in terms of speed and, most notably, memory usage. But the catch is that sometimes it can produce <strong>false positives</strong>.</p>
+<p><strong>False positives</strong> occur when the filter incorrectly indicates an element is in the set when it actually isn&rsquo;t. However, if the filter says an element is <strong>not</strong> present, you can be 100% sure it&rsquo;s not there (no false negatives).</p>
 <h2 id="where-are-bloom-filters-used">Where are Bloom Filters used?</h2>
-<p>Some IRL examples of using Bloom Filters include:</p>
+<p>Some real-world examples of using Bloom Filters include:</p>
 <ul>
-<li>Databases like Cassandra use Bloom Filters to prevent reads from SSTables.</li>
-<li>Web crawlers use them to prevent re-crawling of same pages.</li>
-<li>Intrusion detection systems can use them to store suspicious IPs and control access based off it.</li>
-<li>Email spam filters use them to flag spam.</li>
-<li>Blockchains use them to check if a transaction has already been processed.</li>
+<li><strong>Databases (e.g., Cassandra, LevelDB, RocksDB):</strong> To reduce disk lookups for non-existent rows or keys. A false positive might result in an unnecessary disk read (a small cost), but a &ldquo;definitely not&rdquo; saves that read entirely.</li>
+<li><strong>Web Crawlers (e.g., Google BigTable uses them):</strong> To avoid re-crawling pages that have already been visited. A false positive means a page might be skipped occasionally, which is often an acceptable trade-off for massive efficiency gains.</li>
+<li><strong>Content Recommendation Systems:</strong> To filter out articles or products a user has already seen. A false positive might mean a user doesn&rsquo;t get shown one item they haven&rsquo;t seen, usually not critical.</li>
+<li><strong>Intrusion Detection Systems:</strong> To store suspicious IPs and flag or control access. A false positive might flag a safe IP, requiring a secondary check, which is better than missing a threat.</li>
+<li><strong>Email Spam Filters:</strong> To identify known spam signatures or senders. A false positive could incorrectly flag a legitimate email, so the FP rate needs to be very low and often combined with other checks.</li>
+<li><strong>Blockchains (e.g., Bitcoin, Ethereum):</strong> To quickly check if a transaction or log has likely been processed or if an address is part of a large set, without querying the entire chain.</li>
 </ul>
 <h2 id="how-do-bloom-filters-work">How Do Bloom Filters Work?</h2>
-<p>Simply put, they work by hashing elements with different hash functions. Then mark the specific bits corresponding to those hashes in the bit array. Let&rsquo;s look at it step by step:</p>
+<p>Simply put, they work by hashing elements with different hash functions and then marking specific bits corresponding to those hashes in a bit array. Let’s look at it step by step:</p>
 <ol>
-<li><strong>Create a Bit Array</strong>: Start with a large array of bits, all set to 0.</li>
-<li><strong>Hash the Input</strong>: When an element is added, it is hashed using different hash functions. Each function produces an index in the bit array.</li>
-<li><strong>Set the Bits</strong>: For each hash result, set the corresponding bit in the array to 1.</li>
-<li><strong>Check Membership</strong>: To check if an element is in the set, hash it again using the same functions. If all the corresponding bits are 1, the element <strong>might</strong> be in the set. If any bit is 0, the element is <strong>definitely not</strong> in the set.</li>
+<li><strong>Create a Bit Array</strong>: Start with an array of <code>m</code> bits, all set to 0. This is typically implemented using a byte array for memory efficiency.</li>
+<li><strong>Hash the Input</strong>: When an element is added, it is hashed <code>k</code> times using different hash functions (or techniques that simulate different hash functions). Each function produces an index in the bit array.</li>
+<li><strong>Set the Bits</strong>: For each of the <code>k</code> hash results (indices), set the corresponding bit in the array to 1.</li>
+<li><strong>Check Membership</strong>: To check if an element is in the set, hash it again using the same <code>k</code> functions. If <strong>all</strong> the corresponding bits at these <code>k</code> indices are 1, the element <strong>might</strong> be in the set (it could be a false positive). If <strong>any</strong> bit is 0, the element is <strong>definitely not</strong> in the set.</li>
 </ol>
-<p>There are a few things to keep in mind though. First, the <strong>hash functions</strong> don&rsquo;t need to be cryptographically secure. They just need to be fast and distribute values uniformly across the bit array. Common choices include Murmur, FNV-1, or other simple, non-cryptographic hash functions.</p>
-<p>The main concern is the possibility of <strong>false positives</strong>. As you add more elements to a Bloom Filter, the chance of a false positive increases. This is the trade-off for the efficiency and space-saving benefits it provides.</p>
-<p>Additionally, <strong>Bloom Filters do not support deletions</strong>. Once an item is added, it can’t be removed. Doing so could unintentionally affect other elements that share the same bits.</p>
-<h2 id="not-a-one-size-fits-all">Not A One Size Fits All</h2>
-<p>The effectiveness of a Bloom Filter depends on its size and the number of hash functions used. There is no one size fits all and every use case needs to fine-tune the following parameters to get the most out of it:</p>
+<p>There are a few things to keep in mind. First, the <strong>hash functions</strong> don’t need to be cryptographically secure. They just need to be fast, distribute values uniformly across the bit array, and be independent of each other. Common choices include MurmurHash, FNV, or xxHash.</p>
+<p>The main concern, as mentioned, is the possibility of <strong>false positives</strong>. As you add more elements to a Bloom Filter, more bits in the array get set to 1, and the chance of a false positive increases. This is the fundamental trade-off for its efficiency and space-saving benefits.</p>
+<p>Additionally, <strong>standard Bloom Filters do not support deletions</strong>. Removing an item by flipping its bits from 1 to 0 is problematic because those bits might also be part of the representation for other items in the filter. Doing so could introduce false negatives, which Bloom filters are designed to avoid. (Variants like Counting Bloom Filters can support deletion at the cost of more memory).</p>
+<h2 id="bloom-filters-vs-hash-tables-for-membership">Bloom Filters vs. Hash Tables (for Membership)</h2>
+<p>To better understand where Bloom Filters shine, here&rsquo;s a quick comparison with Hash Tables when used purely for membership testing:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Bloom Filter</th>
+          <th>Hash Table (for membership)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Memory Usage</td>
+          <td>Very Low (e.g., 1-2 bytes/item for 1% FP rate)</td>
+          <td>Moderate to High (stores actual keys + overhead)</td>
+      </tr>
+      <tr>
+          <td>Speed (Add)</td>
+          <td>O(k) - k hash computations</td>
+          <td>O(1) average, O(N) worst</td>
+      </tr>
+      <tr>
+          <td>Speed (Check)</td>
+          <td>O(k) - k hash computations</td>
+          <td>O(1) average, O(N) worst</td>
+      </tr>
+      <tr>
+          <td>False Positives</td>
+          <td>Yes (probability is tunable)</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>False Negatives</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>Deletion</td>
+          <td>No (standard), Yes (variants like Counting BF)</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>Store Elements</td>
+          <td>No (only their &ldquo;fingerprint&rdquo; in the bit array)</td>
+          <td>Yes (stores actual elements/keys)</td>
+      </tr>
+      <tr>
+          <td>Primary Use Case</td>
+          <td>Fast, memory-efficient probabilistic membership test, especially to avoid costly checks.</td>
+          <td>Exact membership testing, key-value storage.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="not-a-one-size-fits-all-tuning-your-bloom-filter">Not A One Size Fits All: Tuning Your Bloom Filter</h2>
+<p>The effectiveness of a Bloom Filter depends critically on its configuration. You need to fine-tune the following parameters for your specific use case:</p>
 <ul>
 <li>The <strong>size of the bit array</strong> (m).</li>
 <li>The <strong>number of hash functions</strong> (k).</li>
 </ul>
 <h4 id="calculating-the-optimal-size-of-the-bit-array-m">Calculating the Optimal Size of the Bit Array (m)</h4>
-<p>The <strong>optimal size</strong> of the bit array is calculated with the formula:</p>
-\[
-m = \frac{-n \cdot \ln(p)}{(\ln(2))^2}
-\]<p>Where:</p>
+<p>The <strong>optimal size</strong> of the bit array is calculated with the formula:
+</p>
+$$ m = \frac{-n \cdot \ln(p)}{(\ln(2))^2} $$<p>
+Where:</p>
 <ul>
-<li>\(n\) is the <strong>number of elements</strong> you plan to add to the filter.</li>
-<li>\(p\) is the <strong>acceptable false positive rate</strong> (between 0 and 1). For example, if you can tolerate a 1% false positive rate, \(p = 0.01\).</li>
+<li><code>n</code> is the <strong>number of elements</strong> you plan to add to the filter.</li>
+<li><code>p</code> is the <strong>acceptable false positive rate</strong> (e.g., 0.01 for 1%).</li>
 </ul>
-<p>This formula calculates how large the bit array needs to be to keep the false positive rate at the specified level, given the expected number of elements.</p>
+<p>This formula tells you how large the bit array needs to be to maintain the desired false positive rate <code>p</code> given <code>n</code> elements. A larger <code>m</code> means more bits, reducing the chance of collisions and thus lowering the false positive rate, but at the cost of more memory.</p>
 <h4 id="calculating-the-optimal-number-of-hash-functions-k">Calculating the Optimal Number of Hash Functions (k)</h4>
-<p>Once you know the size of the bit array, you can calculate the <strong>optimal number of hash functions</strong> (k) to use with the following formula:</p>
-\[
-k = \frac{m}{n} \cdot \ln(2)
-\]<p>Where:</p>
+<p>Once you know <code>m</code>, you can calculate the <strong>optimal number of hash functions</strong> (<code>k</code>):
+</p>
+$$ k = \frac{m}{n} \cdot \ln(2) $$<p>
+Where:</p>
 <ul>
-<li>\(m\) is the <strong>size of the bit array</strong> (calculated above).</li>
-<li>\(n\) is the <strong>number of elements</strong> you expect to add.</li>
+<li><code>m</code> is the size of the bit array.</li>
+<li><code>n</code> is the number of elements.</li>
 </ul>
-<p>This formula helps you choose the best number of hash functions to minimize the false positive rate and ensure the filter performs efficiently.</p>
+<p>This formula helps choose <code>k</code> to minimize the false positive rate. Too few hash functions (<code>k</code> is small) won&rsquo;t distribute the &ldquo;fingerprints&rdquo; well enough. Too many (<code>k</code> is large) will cause the bit array to fill up too quickly, increasing false positives, and also slow down add/check operations as more hashes need to be computed. The formula gives the sweet spot.</p>
 <h4 id="example">Example</h4>
-<p>Let’s say you expect to add <strong>1 million elements</strong> (n = 1,000,000) to the Bloom Filter and want a <strong>false positive rate of 1%</strong> (p = 0.01). Using the formulas:</p>
+<p>Let’s say you expect to add <strong>1 million elements</strong> (n = 1,000,000) and want a <strong>false positive rate of no more than 1%</strong> (p = 0.01).</p>
+<p>Using the formulas:</p>
 <ul>
-<li><strong>Bit array size (m)</strong> = 9,585,059 bits or 1.2MB.</li>
-<li><strong>Number of hash functions (k)</strong> = 7.</li>
+<li><strong>Bit array size (m)</strong> = 9,585,059 bits. This is roughly 1.2 MB.</li>
+<li><strong>Number of hash functions (k)</strong> 7.</li>
 </ul>
-<p>These parameters will give you a Bloom Filter that’s efficient in terms of both memory and accuracy.</p>
-<h3 id="dont-go-overboard-with-hash-functions">Don’t Go Overboard with Hash Functions</h3>
-<p>It might seem like using more hash functions would improve the accuracy by reducing false positives. However, using too many hash functions can actually hurt performance. It increases the likelihood of hash collisions and also slows down both reads and writes to the filter. The key is finding that sweet spot, which you can do using the formulas above.</p>
+<p>These parameters provide a Bloom Filter efficient in memory and accuracy for this scenario.</p>
+<h3 id="dont-go-overboard-or-underboard-with-hash-functions">Don’t Go Overboard (or Underboard) with Hash Functions</h3>
+<p>It might seem like using more hash functions would always improve accuracy. However, as explained, the formula for <code>k</code> gives an <em>optimal</em> value. Deviating significantly from this <code>k</code> (given <code>m</code> and <code>n</code>) will likely increase the false positive probability or slow down operations unnecessarily. Always aim for the calculated optimal <code>k</code>.</p>
 <h2 id="scalable-bloom-filters">Scalable Bloom Filters</h2>
-<p>In some cases, it’s difficult to predict the exact number of elements you’ll be working with ahead of time. This is where <strong>Scalable Bloom Filters</strong> come into play. These filters start with a small bit array and automatically grow as the dataset expands. When the bit array fills up beyond a certain threshold, a new, larger filter is created for subsequent data. The size of each new filter grows exponentially, and queries are checked across all filters to verify the presence of an element.</p>
-<p>Scalable Bloom Filters are particularly useful when the size of the dataset is unpredictable. However, they introduce additional complexity. Managing multiple filters and ensuring that queries are efficiently processed across all of them can require extra effort and resources.</p>
+<p>In some cases, it’s difficult to predict the exact number of elements (<code>n</code>) you’ll be working with ahead of time. This is where <strong>Scalable Bloom Filters</strong> come into play. These filters start with a small initial Bloom filter. When the number of items added to the current filter approaches its planned capacity (the <code>n</code> for which it was designed to maintain a target false positive rate <code>p</code>), a new, larger filter is created. Subsequent items are added to this new filter. Queries must then check all filters in the sequence. Typically, the size of new filters and their capacities grow geometrically.</p>
+<p>Scalable Bloom Filters are useful for dynamic datasets but introduce complexity in managing multiple filters and can have a slightly higher overall false positive rate or slower queries as more filters are added.</p>
 <h2 id="example-implementation-in-go">Example Implementation in Go</h2>
 <p>Here’s a simple implementation of a Bloom Filter in Go:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">bloomfilter</span>
@@ -127,29 +181,35 @@ k = \frac{m}{n} \cdot \ln(2)
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">BloomFilter</span> <span style="color:#66d9ef">struct</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">bits</span>      []<span style="color:#66d9ef">bool</span>        <span style="color:#75715e">// The bit array where membership data is stored.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">size</span>      <span style="color:#66d9ef">uint</span>          <span style="color:#75715e">// The size of the bit array.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">hashFuncs</span> []<span style="color:#a6e22e">hash</span>.<span style="color:#a6e22e">Hash32</span> <span style="color:#75715e">// A slice of hash functions used for hashing the input.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">bits</span>      []<span style="color:#66d9ef">bool</span>        <span style="color:#75715e">// The bit array where membership data is stored.</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">size</span>      <span style="color:#66d9ef">uint</span>          <span style="color:#75715e">// The size of the bit array.</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">hashFuncs</span> []<span style="color:#a6e22e">hash</span>.<span style="color:#a6e22e">Hash32</span> <span style="color:#75715e">// A slice of hash functions used for hashing the input.</span>
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// New initializes a new Bloom Filter with the given number of elements (n) and the desired false positive rate (p).
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// It calculates the size of the bit array and the number of hash functions.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">uint</span>, <span style="color:#a6e22e">p</span> <span style="color:#66d9ef">float64</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">BloomFilter</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Calculate the optimal size of the bit array (m) based on the formula:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// m = - (n * ln(p)) / (ln(2))^2
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> uint(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Ceil</span>((<span style="color:#f92672">-</span>float64(<span style="color:#a6e22e">n</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#a6e22e">p</span>)) <span style="color:#f92672">/</span> (<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Pow</span>(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">2</span>))))
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// New initializes a new Bloom Filter with the given number of elements (n) and</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the desired false positive rate (p). It calculates the size of the bit array</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// and the number of hash functions.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">uint</span>, <span style="color:#a6e22e">p</span> <span style="color:#66d9ef">float64</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">BloomFilter</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Calculate the optimal size of the bit array (m) based on the formula:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// m = - (n * ln(p)) / (ln(2))^2</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> uint(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Ceil</span>((<span style="color:#f92672">-</span>float64(<span style="color:#a6e22e">n</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#a6e22e">p</span>)) <span style="color:#f92672">/</span> (<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Pow</span>(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">2</span>))))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Calculate the optimal number of hash functions (k) based on the formula:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// k = (m / n) * ln(2)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">k</span> <span style="color:#f92672">:=</span> uint(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Ceil</span>((float64(<span style="color:#a6e22e">m</span>) <span style="color:#f92672">/</span> float64(<span style="color:#a6e22e">n</span>)) <span style="color:#f92672">*</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#ae81ff">2</span>)))
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Calculate the optimal number of hash functions (k) based on the formula:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// k = (m / n) * ln(2)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">k</span> <span style="color:#f92672">:=</span> uint(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Ceil</span>((float64(<span style="color:#a6e22e">m</span>) <span style="color:#f92672">/</span> float64(<span style="color:#a6e22e">n</span>)) <span style="color:#f92672">*</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#ae81ff">2</span>)))
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">hashes</span> <span style="color:#f92672">:=</span> make([]<span style="color:#a6e22e">hash</span>.<span style="color:#a6e22e">Hash32</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">k</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; int(<span style="color:#a6e22e">k</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Initialize a slice to hold &#39;k&#39; hash functions. In this example, we are using the same FNV-32 hash function
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// for all &#39;k&#39; functions. Ideally, we would use different hash functions or hash functions that support seeding
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// to improve distribution and reduce collisions. To compensate for this, we will append a unique seed suffix to
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// each key to simulate different hash functions, ensuring diversity in hash outputs.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">hashes</span> = append(<span style="color:#a6e22e">hashes</span>, <span style="color:#a6e22e">fnv</span>.<span style="color:#a6e22e">New32</span>())
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Initialize a slice to hold &#39;k&#39; hash functions. In this example, we</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// are using the same FNV-32 hash function for all &#39;k&#39; functions.</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Ideally, we would use different hash functions or hash functions that</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// support seeding to improve distribution and reduce collisions. To</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// compensate for this, we will append a unique seed suffix to each key</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// to simulate different hash functions, ensuring diversity in hash</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// outputs.</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Note that sadly we cannot pass a seed to the fnv hash in Go to</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// generate k different hashes.</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">hashes</span> = append(<span style="color:#a6e22e">hashes</span>, <span style="color:#a6e22e">fnv</span>.<span style="color:#a6e22e">New32</span>())
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">BloomFilter</span>{
@@ -159,18 +219,20 @@ k = \frac{m}{n} \cdot \ln(2)
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Add adds a new element (key) to the Bloom Filter.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// This operation sets the bits in the bit array based on the hashed values of the key.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">bf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">BloomFilter</span>) <span style="color:#a6e22e">Add</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Add adds a new element (key) to the Bloom Filter.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// This operation sets the bits in the bit array based on the hashed values of</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the key.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">bf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">BloomFilter</span>) <span style="color:#a6e22e">Add</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) {
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">indices</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bf</span>.<span style="color:#a6e22e">hashes</span>(<span style="color:#a6e22e">key</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">index</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">indices</span> {
 </span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">bf</span>.<span style="color:#a6e22e">bits</span>[<span style="color:#a6e22e">index</span>] = <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Has checks if a given element (key) might be in the Bloom Filter.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// It returns true if the element might exist, and false if it is definitely not in the filter.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">bf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">BloomFilter</span>) <span style="color:#a6e22e">Has</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Has checks if a given element (key) might be in the Bloom Filter.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// It returns true if the element might exist, and false if it is definitely not</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// in the filter.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">bf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">BloomFilter</span>) <span style="color:#a6e22e">Has</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">indices</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bf</span>.<span style="color:#a6e22e">hashes</span>(<span style="color:#a6e22e">key</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">index</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">indices</span> {
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">bf</span>.<span style="color:#a6e22e">bits</span>[<span style="color:#a6e22e">index</span>] {
@@ -181,18 +243,21 @@ k = \frac{m}{n} \cdot \ln(2)
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// hashes generates the indices in the bit array based on the key using multiple hash functions.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">bf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">BloomFilter</span>) <span style="color:#a6e22e">hashes</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) []<span style="color:#66d9ef">uint</span> {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// hashes generates the indices in the bit array based on the key using multiple</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// hash functions.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">bf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">BloomFilter</span>) <span style="color:#a6e22e">hashes</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) []<span style="color:#66d9ef">uint</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">indices</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">uint</span>, <span style="color:#ae81ff">0</span>, len(<span style="color:#a6e22e">bf</span>.<span style="color:#a6e22e">hashFuncs</span>))
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">h</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">bf</span>.<span style="color:#a6e22e">hashFuncs</span> {
 </span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Reset</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Generate a unique string by appending a seed value (based on hash function index)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// This ensures that each hash function produces different outputs for the same key.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%s:seed%d&#34;</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">i</span>)))
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Generate a unique string by appending a seed value (based on hash</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// function index). This ensures that each hash function produces</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// different outputs for the same key.</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%s:seed%d&#34;</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">i</span>)))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Calculate the hash and compute the index in the bit array using modulo operation
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">indices</span> = append(<span style="color:#a6e22e">indices</span>, uint(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Sum32</span>())<span style="color:#f92672">%</span><span style="color:#a6e22e">bf</span>.<span style="color:#a6e22e">size</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Calculate the hash and compute the index in the bit array using</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// modulo operation</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">indices</span> = append(<span style="color:#a6e22e">indices</span>, uint(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Sum32</span>())<span style="color:#f92672">%</span><span style="color:#a6e22e">bf</span>.<span style="color:#a6e22e">size</span>)
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">indices</span>
@@ -258,32 +323,40 @@ k = \frac{m}{n} \cdot \ln(2)
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>goos: linux
 </span></span><span style="display:flex;"><span>goarch: amd64
 </span></span><span style="display:flex;"><span>pkg: github.com/xanish/bloom-filter
-</span></span><span style="display:flex;"><span>cpu: AMD Ryzen <span style="color:#ae81ff">5</span> 7600X 6-Core Processor             
+</span></span><span style="display:flex;"><span>cpu: AMD Ryzen <span style="color:#ae81ff">5</span> 7600X 6-Core Processor
 </span></span><span style="display:flex;"><span>BenchmarkBloomFilter_Add-12      <span style="color:#ae81ff">1636203</span>               689.0 ns/op
 </span></span><span style="display:flex;"><span>BenchmarkBloomFilter_Has-12      <span style="color:#ae81ff">1832988</span>               653.4 ns/op
 </span></span><span style="display:flex;"><span>PASS
 </span></span><span style="display:flex;"><span>ok      github.com/xanish/bloom-filter  5.686s
-</span></span></code></pre></div><p>Even though the code is fairly simple and does not consider every possible optimisation we still get pretty fast operations at around 690ns. You can check out the repo on my <a href="https://github.com/xanish/bloom-filter">GitHub</a>.</p>
+</span></span></code></pre></div><p>These sub-microsecond operations for <code>Add</code> and <code>Has</code> are incredibly fast. This speed is especially valuable when a &ldquo;no&rdquo; answer from <code>Has()</code> might save milliseconds or even seconds by avoiding a disk lookup, a network call, or other expensive computations.</p>
+<p>You can check out the repo on my <a href="https://github.com/xanish/bloom-filter">GitHub</a></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Bloom Filters are a fantastic tool for efficiently checking membership in large sets while minimizing memory usage. They’re especially useful in applications where speed is critical, and a small error rate (false positives) is acceptable.</p>
-<p>By understanding how Bloom Filters work and how to calculate their parameters, you can optimize performance in a variety of applications, from caching to large-scale data processing. Their low memory footprint and high-speed performance make them a powerful solution for many systems.</p>
-<p>And if you’re concerned about the limitations of fixed-size filters, don’t forget about scalable Bloom Filters, which can adjust dynamically as your dataset grows.</p>
-<p>If you’re interested in trying it out, give it a shot in Go! You’ll quickly see how valuable Bloom Filters can be for solving certain types of problems.</p>
+<p>Bloom Filters are a fantastic tool for efficiently checking membership in large sets while minimizing memory usage. They’re especially useful in applications where some probabilistic uncertainty (false positives) is an acceptable trade-off for significant speed and memory gains. Remember, they can tell you if an element is <em>definitely not</em> in a set or <em>possibly</em> in a set.</p>
+<p>Key limitations to remember:</p>
+<ul>
+<li>They have false positives (though the rate is tunable).</li>
+<li>Standard Bloom filters don&rsquo;t support element deletion.</li>
+<li>They don&rsquo;t store the elements themselves, only their presence.</li>
+<li>Optimal configuration requires a good estimate of the number of items to be inserted.</li>
+</ul>
+<p>By understanding how Bloom Filters work, their trade-offs, and how to calculate their parameters, you can optimize performance in a variety of applications. And if you’re concerned about the limitations of fixed-size filters for dynamically growing datasets, Scalable Bloom Filters offer a viable alternative.</p>
+<p>If you’re interested in trying it out, implementing one (like the Go example) is a great way to solidify your understanding!</p>
 <h2 id="references">References</h2>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom Filter</a></li>
-<li><a href="https://gsd.di.uminho.pt/members/cbm/ps/dbloom.pdf">Scalable Bloom Filters</a></li>
-<li><a href="https://hur.st/bloomfilter/">Bloom Filter Calculator</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom Filter (Wikipedia)</a></li>
+<li><a href="https://gsd.di.uminho.pt/members/cbm/ps/dbloom.pdf">Scalable Bloom Filters (Original Paper by Almeida et al.)</a></li>
+<li><a href="https://hur.st/bloomfilter/">Bloom Filter Calculator (Online Tool by Thomas Hurst)</a></li>
+<li><a href="https://www.eecs.harvard.edu/~michaelm/postscripts/rsa2008.pdf">Less Hashing, Same Performance: Building a Better Bloom Filter (Kirsch &amp; Mitzenmacher, for advanced hashing techniques)</a></li>
 </ul>
 
   </div>
 
-</main>
+        </main>
 
-<footer>
+        <footer>
     <p class="text-center">Interested in working with me? <a href="https://www.linkedin.com/in/danish-ali-furniturewala/" target="_blank" class="hover:text-stone-100 hover:underline">Let's Connect</a>.</p>
     <p class="text-center">&copy; Danish Ali Furniturewala 2025</p>
 </footer>
 
-</body>
+    </body>
 </html>
