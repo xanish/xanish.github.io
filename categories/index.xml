@@ -6,8 +6,36 @@
     <description>Recent content in Categories on xanish.dev</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Dec 2024 12:35:16 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2025 19:27:17 +0530</lastBuildDate>
     <atom:link href="https://xanish.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Backend Development</title>
+      <link>https://xanish.github.io/categories/backend-development/</link>
+      <pubDate>Wed, 01 Jan 2025 19:27:17 +0530</pubDate>
+      <guid>https://xanish.github.io/categories/backend-development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Structures</title>
+      <link>https://xanish.github.io/categories/data-structures/</link>
+      <pubDate>Wed, 01 Jan 2025 19:27:17 +0530</pubDate>
+      <guid>https://xanish.github.io/categories/data-structures/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>System Design</title>
+      <link>https://xanish.github.io/categories/system-design/</link>
+      <pubDate>Wed, 01 Jan 2025 19:27:17 +0530</pubDate>
+      <guid>https://xanish.github.io/categories/system-design/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Engineering</title>
+      <link>https://xanish.github.io/categories/data-engineering/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>https://xanish.github.io/categories/data-engineering/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Distributed Systems</title>
       <link>https://xanish.github.io/categories/distributed-systems/</link>

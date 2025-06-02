@@ -6,13 +6,48 @@
     <description>Recent content in Tags on xanish.dev</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Dec 2024 12:35:16 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2025 19:27:17 +0530</lastBuildDate>
     <atom:link href="https://xanish.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bloom Filter</title>
+      <link>https://xanish.github.io/tags/bloom-filter/</link>
+      <pubDate>Wed, 01 Jan 2025 19:27:17 +0530</pubDate>
+      <guid>https://xanish.github.io/tags/bloom-filter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>https://xanish.github.io/tags/go/</link>
+      <pubDate>Wed, 01 Jan 2025 19:27:17 +0530</pubDate>
+      <guid>https://xanish.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hashing</title>
+      <link>https://xanish.github.io/tags/hashing/</link>
+      <pubDate>Wed, 01 Jan 2025 19:27:17 +0530</pubDate>
+      <guid>https://xanish.github.io/tags/hashing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://xanish.github.io/tags/performance/</link>
+      <pubDate>Wed, 01 Jan 2025 19:27:17 +0530</pubDate>
+      <guid>https://xanish.github.io/tags/performance/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Apache Kafka</title>
       <link>https://xanish.github.io/tags/apache-kafka/</link>
       <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
       <guid>https://xanish.github.io/tags/apache-kafka/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Pipelines</title>
+      <link>https://xanish.github.io/tags/data-pipelines/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>https://xanish.github.io/tags/data-pipelines/</guid>
       <description></description>
     </item>
     <item>
@@ -34,13 +69,6 @@
       <link>https://xanish.github.io/tags/messaging-systems/</link>
       <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
       <guid>https://xanish.github.io/tags/messaging-systems/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Research Papers</title>
-      <link>https://xanish.github.io/tags/research-papers/</link>
-      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
-      <guid>https://xanish.github.io/tags/research-papers/</guid>
       <description></description>
     </item>
   </channel>

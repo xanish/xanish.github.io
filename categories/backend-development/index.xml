@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Backend Development on xanish.dev</title>
+    <link>https://xanish.github.io/categories/backend-development/</link>
+    <description>Recent content in Backend Development on xanish.dev</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Jan 2025 19:27:17 +0530</lastBuildDate>
+    <atom:link href="https://xanish.github.io/categories/backend-development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding Bloom Filters: A Simple Guide</title>
+      <link>https://xanish.github.io/blog/understanding-bloom-filters-a-simple-guide/</link>
+      <pubDate>Wed, 01 Jan 2025 19:27:17 +0530</pubDate>
+      <guid>https://xanish.github.io/blog/understanding-bloom-filters-a-simple-guide/</guid>
+      <description>&lt;p&gt;When dealing with large databases, verifying whether an item belongs to a collection can be a slow and tedious process. Common data structures like hash tables, trees, and arrays can be slow or memory-intensive, especially when you’re dealing with millions or billions of elements. This is where a Bloom Filter can help. It offers a significantly more memory-efficient approach and can be faster, particularly when its use prevents more costly operations like disk I/O. However, this comes with some interesting caveats.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kafka: Unpacking the Backbone of Modern Data Pipelines</title>
+      <link>https://xanish.github.io/blog/kafka-unpacking-the-backbone-of-modern-data-pipelines/</link>
+      <pubDate>Wed, 25 Dec 2024 12:35:16 +0530</pubDate>
+      <guid>https://xanish.github.io/blog/kafka-unpacking-the-backbone-of-modern-data-pipelines/</guid>
+      <description>&lt;p&gt;These days, apps don’t just run—they learn, adapt, and deliver. From fine-tuning search results to suggesting your next binge-watch, modern applications thrive on a steady diet of activity data. This data powers features like:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Smarter search relevance&lt;/li&gt;&#xA;&lt;li&gt;Personalized recommendations&lt;/li&gt;&#xA;&lt;li&gt;Laser-targeted ads&lt;/li&gt;&#xA;&lt;li&gt;Keeping malicious users at bay&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;But here’s the kicker: integrating this data into production pipelines means dealing with a tidal wave of information. Back in the day, people scraped logs manually or relied on basic analytics. Then came distributed log aggregators like Facebook’s Scribe and Cloudera’s Flume. While valuable for collecting log data, they were often geared more towards offline batch processing, not always meeting the demands of large-scale, real-time consumption. Enter Kafka — a system designed to bridge this gap and redefine how we handle high-volume data streams.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
