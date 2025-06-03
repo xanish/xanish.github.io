@@ -260,6 +260,4 @@ proficiency = 4
 category = 'Architecture'
 +++
 
-## Something About Me
-
 I'm a seasoned software engineer with over 7 years of experience in crafting scalable, high-performance systems. While I thrive in backend development, I also love owning systems from end-to-end—designing robust APIs, building microservices architectures, developing responsive UIs, and ensuring every part of the system works seamlessly together. My passion lies in solving complex technical challenges and delivering innovative solutions. I'm committed to continuous learning, staying updated with industry trends, and mentoring junior engineers. Currently, I'm focused on mastering Go and cloud-native architectures to build impactful systems as well as being in a love hate relationship with AI coding tools (Looking at your Cursor). Beyond coding, I enjoy staying active, reading manga, or enjoying the latest anime and movies with friends (often accompanied by good food and some friendly banter).
