@@ -9,6 +9,13 @@
     <lastBuildDate>Wed, 01 Jan 2025 19:27:17 +0530</lastBuildDate>
     <atom:link href="https://xanish.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About</title>
+      <link>https://xanish.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://xanish.github.io/about/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m a seasoned software engineer with over 7 years of experience in crafting scalable, high-performance systems. While I thrive in backend development, I also love owning systems from end-to-end—designing robust APIs, building microservices architectures, developing responsive UIs, and ensuring every part of the system works seamlessly together. My passion lies in solving complex technical challenges and delivering innovative solutions. I&amp;rsquo;m committed to continuous learning, staying updated with industry trends, and mentoring junior engineers. Currently, I&amp;rsquo;m focused on mastering Go and cloud-native architectures to build impactful systems as well as being in a love hate relationship with AI coding tools (Looking at your Cursor). Beyond coding, I enjoy staying active, reading manga, or enjoying the latest anime and movies with friends (often accompanied by good food and some friendly banter).&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Understanding Bloom Filters: A Simple Guide</title>
       <link>https://xanish.github.io/blog/understanding-bloom-filters-a-simple-guide/</link>
       <pubDate>Wed, 01 Jan 2025 19:27:17 +0530</pubDate>

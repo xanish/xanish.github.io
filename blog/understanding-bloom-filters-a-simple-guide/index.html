@@ -12,7 +12,19 @@
     xanish.dev
 </title>
 
-<link rel="stylesheet" href="/css/styles.min.c5c985018df075cc9f153599b0cc4f84c4862c92ed70d73aa0b28622256af872.css" integrity="sha256-xcmFAY3wdcyfFTWZsMxPhMSGLJLtcNc6oLKGIiVq&#43;HI=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.min.bdc6eb3ad58cd458852584dcb7e6f332af204f4076a73fb07be1488977ac57dc.css" integrity="sha256-vcbrOtWM1FiFJYTct&#43;bzMq8gT0B2pz&#43;we&#43;FIiXesV9w=" crossorigin="anonymous">
+<link
+    rel="preload"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+/>
+<noscript
+    ><link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+/></noscript>
+
 
 <script
     async
@@ -28,7 +40,7 @@
     gtag("config", "G-QWQV3QEXV1");
 </script>
 
-
+ 
     </head>
     <body
         class="container max-w-screen-md mx-auto bg-black text-stone-400 font-body px-6 min-h-[100vh] flex flex-col"
@@ -43,13 +55,15 @@
 
         <ul class="flex">
             
+            <li class="ml-6"><a href="/about/">About</a></li>
+            
             <li class="ml-6"><a href="/blog/">Blog</a></li>
             
         </ul>
     </nav>
 </header>
 
-        <main class="text-justify flex-grow">
+        <main class="flex flex-col text-justify flex-grow justify-center">
              <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <script>
     MathJax = {
@@ -60,14 +74,12 @@
     };
 </script> 
             
-  <h1>Understanding Bloom Filters: A Simple Guide</h1>
+<h1>Understanding Bloom Filters: A Simple Guide</h1>
 
-  
-  
-  <time datetime="2025-01-01T19:27:17&#43;05:30">January 1, 2025</time>
+ 
+<time datetime="2025-01-01T19:27:17&#43;05:30">January 1, 2025</time>
 
-  <div class="blog-content">
-    <p>When dealing with large databases, verifying whether an item belongs to a collection can be a slow and tedious process. Common data structures like hash tables, trees, and arrays can be slow or memory-intensive, especially when you’re dealing with millions or billions of elements. This is where a Bloom Filter can help. It offers a significantly more memory-efficient approach and can be faster, particularly when its use prevents more costly operations like disk I/O. However, this comes with some interesting caveats.</p>
+<div class="blog-content"><p>When dealing with large databases, verifying whether an item belongs to a collection can be a slow and tedious process. Common data structures like hash tables, trees, and arrays can be slow or memory-intensive, especially when you’re dealing with millions or billions of elements. This is where a Bloom Filter can help. It offers a significantly more memory-efficient approach and can be faster, particularly when its use prevents more costly operations like disk I/O. However, this comes with some interesting caveats.</p>
 <p>In this post, we will learn what Bloom Filters are, how they work, and how we can optimize them for our use. We will also see an improved implementation of the same in Go!</p>
 <h2 id="what-is-a-bloom-filter">What is a bloom filter?</h2>
 <p>A Bloom Filter is a probabilistic data structure used to check if an element is <strong>possibly</strong> in a set or <strong>definitely not</strong> in a set. It is extremely efficient in terms of speed and, most notably, memory usage. But the catch is that sometimes it can produce <strong>false positives</strong>.</p>
@@ -364,8 +376,7 @@ Where:</p>
 <li><a href="https://hur.st/bloomfilter/">Bloom Filter Calculator (Online Tool by Thomas Hurst)</a></li>
 <li><a href="https://www.eecs.harvard.edu/~michaelm/postscripts/rsa2008.pdf">Less Hashing, Same Performance: Building a Better Bloom Filter (Kirsch &amp; Mitzenmacher, for advanced hashing techniques)</a></li>
 </ul>
-
-  </div>
+</div>
 
         </main>
 
