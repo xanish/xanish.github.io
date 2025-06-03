@@ -16,7 +16,7 @@
         <h1
             class="text-ctp-peach mb-3 text-4xl font-bold md:text-5xl lg:text-6xl"
         >
-            <span class="text-ctp-text">I'm</span> Danish Ali Furniturewala
+            <span class="text-ctp-text">I'm</span> {{ .Site.Data.resume.name }}
         </h1>
 
         <h2
@@ -29,7 +29,7 @@
             class="mt-4 flex items-center justify-center space-x-4 md:justify-start"
         >
             <a
-                href="https://github.com/xanish"
+                href="{{ .Site.Data.resume.contact.github }}"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View my GitHub profile"
@@ -46,7 +46,7 @@
                 </svg>
             </a>
             <a
-                href="https://www.linkedin.com/in/danish-ali-furniturewala/"
+                href="{{ .Site.Data.resume.contact.linkedin }}"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View my LinkedIn profile"
