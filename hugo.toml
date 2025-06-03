@@ -16,5 +16,9 @@ inline = [['\(', '\)']]
 math = false
 
 [[menu.main]]
+name = "About"
+url = "/about/"
+
+[[menu.main]]
 name = "Blog"
 url = "/blog/"

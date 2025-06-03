@@ -1,203 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {{ partial "head.html" . }}
-</head>
-<body>
-{{ partial "header.html" . }}
-
-<main>
-    <section class="mb-10">
-        <h1>{{ .Site.Data.resume.name }}</h1>
-        <h2 class="text-stone-400">{{ .Site.Data.resume.title }}</h2>
-        <ul class="flex space-x-4">
-            <li>
-                <a href="{{ .Site.Data.resume.contact.github }}" target="_blank">
-                    GitHub
-                    <svg class="h-4 w-4 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"/>
-                        <line x1="17" y1="7" x2="7" y2="17" />
-                        <polyline points="8 7 17 7 17 16" />
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="{{ .Site.Data.resume.contact.linkedin }}" target="_blank">
-                    LinkedIn
-                    <svg class="h-4 w-4 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"/>
-                        <line x1="17" y1="7" x2="7" y2="17" />
-                        <polyline points="8 7 17 7 17 16" />
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </section>
-
-    <section class="mb-10">
-        <h2 class="mb-6">Something About Me</h2>
-        <p>{{ .Site.Data.resume.about }}</p>
-    </section>
-
-    <section class="mb-10">
-        <h2 class="mb-6">Technical Skills</h2>
-
-        <ul class="flex flex-wrap items-center">
-            {{ range .Site.Data.resume.technical_skills }}
-            <li class="tag">{{ . }}</li>
-            {{ end }}
-        </ul>
-    </section>
-
-    <section class="mb-10">
-        <h2 class="mb-6">My Journey So Far</h2>
-
-        {{ range .Site.Data.resume.experiences }}
-        <div class="flex flex-col sm:flex-row mb-6">
-            <div class="xl:w-1/4 sm:w-full mb-2">
-                <h4 class="text-stone-200 text-sm uppercase">{{ .startDate }} - {{ .endDate }}</h4>
-            </div>
-
-            <div class="xl:w-3/4 sm:w-full">
-                <article>
-                    <header class="mb-2">
-                        <h3 class="text-stone-100">{{ .title }}</h3>
-                        <h4 class="font-normal text-stone-300">{{ .company }}</h4>
-                    </header>
-
-                    <ul>
-                        {{ range .responsibilities }}
-                        <li class="mb-2">{{ . }}</li>
-                        {{ end }}
-                    </ul>
-
-                    <ul class="flex flex-wrap mt-2">
-                        {{ range .technical_skills }}
-                        <li class="tag">{{ . }}</li>
-                        {{ end }}
-                    </ul>
-                </article>
-            </div>
-        </div>
+{{ define "main" }}
+<div class="flex w-full flex-col items-center justify-center md:flex-row">
+    <div
+        class="flex w-full items-center justify-center p-24 md:h-full md:w-1/3 md:p-0"
+    >
+        {{ with resources.Get "banner.svg" }}
+        <img src="{{ .RelPermalink }}" alt="Programming" />
         {{ end }}
-    </section>
+    </div>
 
-    <section class="mb-10">
-        <h2 class="mb-6">Publications</h2>
+    <article
+        class="flex w-full flex-col items-center justify-center p-6 text-center md:h-full md:w-2/3 md:items-start md:p-6 md:text-left lg:p-8"
+    >
+        <h3 class="text-ctp-subtext1 mb-2 text-lg">Hey there! 👋</h3>
 
-        {{ range .Site.Data.resume.publications }}
-        <div class="flex flex-col sm:flex-row mb-6">
-            <div class="xl:w-1/4 sm:w-full mb-2">
-                <h4 class="text-stone-200 text-sm uppercase">{{ .startDate }} - {{ .endDate }}</h4>
-            </div>
+        <h1
+            class="text-ctp-peach mb-3 text-4xl font-bold md:text-5xl lg:text-6xl"
+        >
+            <span class="text-ctp-text">I'm</span> Danish Ali Furniturewala
+        </h1>
 
-            <div class="xl:w-3/4 sm:w-full">
-                <article>
-                    <header class="mb-2">
-                        <h3 class="text-stone-100">
-                            <a target="_blank" href="{{ .link }}">
-                                {{ .title }}
-                                <svg class="h-4 w-4 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z"/>
-                                    <line x1="17" y1="7" x2="7" y2="17" />
-                                    <polyline points="8 7 17 7 17 16" />
-                                </svg>
-                            </a>
-                        </h3>
-                        <h4 class="font-normal text-stone-300">{{ .journal }}</h4>
-                    </header>
+        <h2
+            class="text-ctp-rosewater mt-0 h-12 font-mono text-xl font-medium md:h-16 md:text-lg lg:text-xl xl:text-2xl"
+        >
+            {displayedText}<span class="blinking-cursor">_</span>
+        </h2>
 
-                    <ul>
-                        {{ range .details }}
-                        <li class="mb-2">{{ . }}</li>
-                        {{ end }}
-                    </ul>
-
-                    <ul class="flex flex-wrap mt-2">
-                        {{ range .technical_skills }}
-                        <li class="tag">{{ . }}</li>
-                        {{ end }}
-                    </ul>
-                </article>
-            </div>
+        <div
+            class="mt-4 flex items-center justify-center space-x-4 md:justify-start"
+        >
+            <a
+                href="https://github.com/xanish"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View my GitHub profile"
+                class="text-ctp-subtext1 hover:text-ctp-peach"
+            >
+                <svg
+                    class="h-6 w-6 md:h-7 md:w-7"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.237 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                    />
+                </svg>
+            </a>
+            <a
+                href="https://www.linkedin.com/in/danish-ali-furniturewala/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View my LinkedIn profile"
+                class="text-ctp-subtext1 hover:text-ctp-peach"
+            >
+                <svg
+                    class="h-6 w-6 md:h-7 md:w-7"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                    />
+                </svg>
+            </a>
         </div>
-        {{ end }}
-    </section>
+    </article>
+</div>
 
-    <section class="mb-10">
-        <h2 class="mb-6">Personal Projects</h2>
+<script>
+    const roles = [
+        "Backend Engineer",
+        "Full-stack Engineer",
+        "Senior Software Engineer",
+        "Senior Module Lead Engineer",
+    ];
+    let currentRoleIndex = 0;
+    let displayedText = "";
+    let isDeleting = false;
+    let typingSpeed = 150;
+    let deletingSpeed = 100;
+    let delayBetweenRoles = 1500;
 
-        {{ range .Site.Data.resume.projects }}
-        <div class="flex flex-col sm:flex-row mb-6">
-            <div class="xl:w-1/4 sm:w-full mb-2">
-                <h4 class="text-sm uppercase">{{ .startDate }} - {{ .endDate }}</h4>
-            </div>
+    function type() {
+        const currentRole = roles[currentRoleIndex];
+        const textElement = document.querySelector(".text-ctp-rosewater");
 
-            <div class="xl:w-3/4 sm:w-full">
-                <article>
-                    <header class="mb-2">
-                        <h3 class="text-stone-100">
-                            <a target="_blank" href="{{ .link }}">
-                                {{ .title }}
-                                <svg class="h-4 w-4 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z"/>
-                                    <line x1="17" y1="7" x2="7" y2="17" />
-                                    <polyline points="8 7 17 7 17 16" />
-                                </svg>
-                            </a>
-                        </h3>
-                    </header>
+        if (isDeleting) {
+            displayedText = currentRole.substring(0, displayedText.length - 1);
+        } else {
+            displayedText = currentRole.substring(0, displayedText.length + 1);
+        }
 
-                    <ul>
-                        {{ range .details }}
-                        <li class="mb-2">{{ . }}</li>
-                        {{ end }}
-                    </ul>
+        // Update the text content, preserving the cursor
+        textElement.innerHTML =
+            displayedText + '<span class="blinking-cursor">_</span>';
 
-                    <ul class="flex flex-wrap mt-2">
-                        {{ range .technical_skills }}
-                        <li class="tag">{{ . }}</li>
-                        {{ end }}
-                    </ul>
-                </article>
-            </div>
-        </div>
-        {{ end }}
-    </section>
+        if (!isDeleting && displayedText === currentRole) {
+            // Pause at end of typing
+            setTimeout(() => {
+                isDeleting = true;
+            }, delayBetweenRoles);
+        } else if (isDeleting && displayedText === "") {
+            isDeleting = false;
+            currentRoleIndex = (currentRoleIndex + 1) % roles.length;
 
-    <section class="mb-10">
-        <h2 class="mb-6">Books I've Read Or Reading</h2>
+            // Pause before typing next role
+            setTimeout(type, typingSpeed);
+            return;
+        }
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-1 justify-between items-center">
-            {{ range .Site.Data.books.read }}
-            <article class="p-1 {{ if .reading }}border rounded-lg border-stone-400{{ end }}">
-                <a href="{{ .link }}" target="_blank">
-                    <img class="rounded-lg" src="{{ .image }}" alt="{{ .title }}">
-                </a>
-            </article>
-            {{ end }}
-        </div>
-    </section>
+        const speed = isDeleting ? deletingSpeed : typingSpeed;
+        setTimeout(type, speed);
+    }
 
-    <section class="mb-10">
-        <h2 class="mb-6">Papers I've Read</h2>
+    // Start the animation when the page loads
+    document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(type, typingSpeed);
+    });
+</script>
 
-        <ul>
-            {{ range .Site.Data.papers.read }}
-            <li>
-                <a href="{{ .link }}" target="_blank">
-                    {{ .title }}
-                    <svg class="h-4 w-4 inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"/>
-                        <line x1="17" y1="7" x2="7" y2="17" />
-                        <polyline points="8 7 17 7 17 16" />
-                    </svg>
-                </a>
-            </li>
-            {{ end }}
-        </ul>
-    </section>
-</main>
-{{ partial "footer.html" . }}
-</body>
-</html>
+<style>
+    .blinking-cursor {
+        animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+        from,
+        to {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+
+{{ end }}

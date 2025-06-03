@@ -1,7 +1,11 @@
-{{ define "main" }} {{ range .Data.Pages }}
-<article class="mb-6">
-    <h2 class="m-0"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-    <p>{{ .Description }}</p>
-    <p>Published: {{ .Date | time.Format "January 2, 2006" }}</p>
-</article>
-{{ end }} {{ end }}
+{{ define "main" }}
+<section class="flex flex-col justify-start items-center flex-grow">
+    {{ range .Data.Pages }}
+    <article class="mb-6">
+        <h2 class="m-0"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <p>{{ .Description }}</p>
+        <p>Published: {{ .Date | time.Format "January 2, 2006" }}</p>
+    </article>
+    {{ end }}
+</section>
+{{ end }}
