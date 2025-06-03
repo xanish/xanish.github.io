@@ -11,16 +11,14 @@
     <article
         class="flex w-full flex-col items-center justify-center p-6 text-center md:h-full md:w-2/3 md:items-start md:p-6 md:text-left lg:p-8"
     >
-        <h3 class="text-ctp-subtext1 mb-2 text-lg">Hey there! 👋</h3>
+        <h3 class="mb-2 text-lg">Hey there! 👋</h3>
 
-        <h1
-            class="text-ctp-peach mb-3 text-4xl font-bold md:text-5xl lg:text-6xl"
-        >
-            <span class="text-ctp-text">I'm</span> {{ .Site.Data.resume.name }}
+        <h1 class="mb-3 text-4xl font-bold md:text-5xl lg:text-6xl">
+            <span>I'm</span> {{ .Site.Data.resume.name }}
         </h1>
 
         <h2
-            class="text-ctp-rosewater mt-0 h-12 font-mono text-xl font-medium md:h-16 md:text-lg lg:text-xl xl:text-2xl"
+            class="mt-0 h-12 font-mono text-xl font-medium md:h-16 md:text-lg lg:text-xl xl:text-2xl"
         >
             {displayedText}<span class="blinking-cursor">_</span>
         </h2>
@@ -33,7 +31,6 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View my GitHub profile"
-                class="text-ctp-subtext1 hover:text-ctp-peach"
             >
                 <svg
                     class="h-6 w-6 md:h-7 md:w-7"
@@ -50,7 +47,6 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View my LinkedIn profile"
-                class="text-ctp-subtext1 hover:text-ctp-peach"
             >
                 <svg
                     class="h-6 w-6 md:h-7 md:w-7"
