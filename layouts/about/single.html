@@ -48,17 +48,17 @@
     </ul>
 </section>
 
-<section class="mb-10">
-    <h2 class="mb-6">Something About Me</h2>
-    <p>{{ .Site.Data.resume.about }}</p>
-</section>
+<section class="mb-10">{{ .Content }}</section>
 
 <section class="mb-10">
     <h2 class="mb-6">Technical Skills</h2>
 
     <ul class="flex flex-wrap items-center">
-        {{ range .Site.Data.resume.technical_skills }}
-        <li class="tag">{{ . }}</li>
+        {{ range .Params.technical_skills }}
+        <li class="tag" data-category="{{ .category }}">
+            <i class="{{ .icon }}"></i>
+            {{ .name }} ({{ .proficiency }}/5)
+        </li>
         {{ end }}
     </ul>
 </section>

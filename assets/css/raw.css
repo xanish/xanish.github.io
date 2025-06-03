@@ -79,6 +79,10 @@ a {
     @apply font-semibold;
     @apply border;
     @apply border-stone-500;
+    @apply flex;
+    @apply items-center;
+    @apply gap-2;
+    @apply justify-center;
 }
 
 footer {
