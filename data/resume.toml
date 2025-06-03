@@ -14,20 +14,20 @@ startDate = "Sept 2024"
 endDate = "Present"
 responsibilities = [
     "Currently working on a B2B SaaS platform uses cutting-edge AI to instantly transform static site content into dynamic, monetizable videos that we believe will skyrocket engagement and ad revenue. I handle the heavy lifting—from AI video creation and review to smart playlist creation—all while pioneering my frontend development with AI tools like Cursor.",
-	"Developed a simple recommender system using Gemini, ChatGPT, and Ollama models to enhance user targeting. The system combines insights from LLMs with in-house data to provide data-driven recommendations aimed at improving ad targeting.",
-	"Developed a microservice to implement role-based access control for all public customer interfaces, optimised response times to sub 50ms latencies, to allow for rapid UI rendering. Incorporated automated unit and integration tests to validate functionality and ensure system reliability.",
+    "Developed a simple recommender system using Gemini, ChatGPT, and Ollama models to enhance user targeting. The system combines insights from LLMs with in-house data to provide data-driven recommendations aimed at improving ad targeting.",
+    "Developed a microservice to implement role-based access control for all public customer interfaces, optimised response times to sub 50ms latencies, to allow for rapid UI rendering. Incorporated automated unit and integration tests to validate functionality and ensure system reliability.",
 ]
 technical_skills = [
-	"Go",
-	"Python",
-	"React",
-	"Node.js",
-	"Express",
-	"MySQL",
-	"Redis",
-	"Docker",
-	"Nomad",
-	"Vault",
+    { name = "Go", icon = "devicon-go-original-wordmark colored" },
+    { name = "Python", icon = "devicon-python-plain colored" },
+    { name = "React", icon = "devicon-react-original colored" },
+    { name = "Node.js", icon = "devicon-nodejs-plain-wordmark colored" },
+    { name = "Express", icon = "devicon-express-original" },
+    { name = "MySQL", icon = "devicon-mysql-original colored" },
+    { name = "Redis", icon = "devicon-redis-plain colored" },
+    { name = "Docker", icon = "devicon-docker-plain colored" },
+    { name = "Nomad", icon = "devicon-nomad-plain colored" },
+    { name = "Vault", icon = "devicon-vault-original colored" },
 ]
 
 [[experiences]]
@@ -41,17 +41,17 @@ responsibilities = [
     "Mentored and onboarded a junior developer, providing guidance, feedback, and a personalized development plan to foster growth and skill development.",
 ]
 technical_skills = [
-    "Go",
-    "Node.js",
-    "Express",
-    "TypeScript",
-    "MySQL",
-    "Redis",
-    "RabbitMQ",
-    "Grafana",
-    "Docker",
-    "ArgoCD",
-    "Vault",
+    { name = "Go", icon = "devicon-go-original-wordmark colored" },
+    { name = "Node.js", icon = "devicon-nodejs-plain-wordmark colored" },
+    { name = "Express", icon = "devicon-express-original" },
+    { name = "TypeScript", icon = "devicon-typescript-plain colored" },
+    { name = "MySQL", icon = "devicon-mysql-original colored" },
+    { name = "Redis", icon = "devicon-redis-plain colored" },
+    { name = "RabbitMQ", icon = "devicon-rabbitmq-original colored" },
+    { name = "Grafana", icon = "devicon-grafana-plain colored" },
+    { name = "Docker", icon = "devicon-docker-plain colored" },
+    { name = "ArgoCD", icon = "devicon-argocd-plain colored" },
+    { name = "Vault", icon = "devicon-vault-original colored" },
 ]
 
 [[experiences]]
@@ -65,15 +65,15 @@ responsibilities = [
     "Mentored and onboarded 3 junior engineers, investing in their professional growth through personalized guidance and hands-on training. Significantly enhanced their engineering skills and practices, empowering them to become valuable contributors to the team.",
 ]
 technical_skills = [
-    "Node.js",
-    "Express",
-    "PHP",
-    "JavaScript",
-    "RabbitMQ",
-    "MySQL",
-    "Redis",
-    "Docker",
-    "Vault",
+    { name = "Node.js", icon = "devicon-nodejs-plain-wordmark colored" },
+    { name = "Express", icon = "devicon-express-original" },
+    { name = "PHP", icon = "devicon-php-plain colored" },
+    { name = "JavaScript", icon = "devicon-javascript-plain colored" },
+    { name = "RabbitMQ", icon = "devicon-rabbitmq-original colored" },
+    { name = "MySQL", icon = "devicon-mysql-original colored" },
+    { name = "Redis", icon = "devicon-redis-plain colored" },
+    { name = "Docker", icon = "devicon-docker-plain colored" },
+    { name = "Vault", icon = "devicon-vault-original colored" },
 ]
 
 [[experiences]]
@@ -86,15 +86,15 @@ responsibilities = [
     "Took a step back from being the sole person on team handling SSO and SAML integration by developing a comprehensive guide, meticulously documented each step for PHP and Node.js applications. By sharing this knowledge, I empowered multiple teams to independently implement these integrations, reducing reliance on specialized expertise and accelerating the adoption of secure authentication practices.",
 ]
 technical_skills = [
-    "PHP",
-    "Node.js",
-    "REST APIs",
-    "JavaScript",
-    "SQL Server",
-    "SAML",
-    "Single Sign-On",
-    "Docker",
-    "Vault",
+    { name = "PHP", icon = "devicon-php-plain colored" },
+    { name = "Node.js", icon = "devicon-nodejs-plain-wordmark colored" },
+    { name = "REST APIs" },
+    { name = "JavaScript", icon = "devicon-javascript-plain colored" },
+    { name = "SQL Server", icon = "devicon-microsoftsqlserver-plain colored" },
+    { name = "SAML" },
+    { name = "Single Sign-On" },
+    { name = "Docker", icon = "devicon-docker-plain colored" },
+    { name = "Vault", icon = "devicon-vault-original colored" },
 ]
 
 [[experiences]]
@@ -109,13 +109,12 @@ responsibilities = [
     "Mentored and onboarded a junior engineer, fostering their growth through personalized guidance and hands-on training. Cultivated a strong foundation in engineering best practices, empowering them to become a valuable team member.",
 ]
 technical_skills = [
-    "PHP",
-    "Laravel",
-    "REST APIs",
-    "Redis",
-    "Grafana",
-    "SQL Server",
-    "Docker",
+    { name = "PHP", icon = "devicon-php-plain colored" },
+    { name = "Laravel", icon = "devicon-laravel-original colored" },
+    { name = "Redis", icon = "devicon-redis-plain colored" },
+    { name = "Grafana", icon = "devicon-grafana-plain colored" },
+    { name = "SQL Server", icon = "devicon-microsoftsqlserver-plain colored" },
+    { name = "Docker", icon = "devicon-docker-plain colored" },
 ]
 
 [[experiences]]
@@ -128,12 +127,12 @@ responsibilities = [
     "Collaborated with designers and business teams to create a user-friendly interface that allows for easy management and launch of campaigns and notifications.",
 ]
 technical_skills = [
-    "PHP",
-    "Laravel",
-    "Kafka",
-    "Redis",
-    "MySQL",
-    "Angular",
+    { name = "PHP", icon = "devicon-php-plain colored" },
+    { name = "Laravel", icon = "devicon-laravel-original colored" },
+    { name = "Kafka", icon = "devicon-apachekafka-original" },
+    { name = "Redis", icon = "devicon-redis-plain colored" },
+    { name = "MySQL", icon = "devicon-mysql-original colored" },
+    { name = "Angular", icon = "devicon-angular-plain colored" },
 ]
 
 [[experiences]]
@@ -145,12 +144,12 @@ responsibilities = [
     "Leveraged Python and difflib to streamline the migration of a legacy system to GitLab. Generated comprehensive reports highlighting differences between SVN, Staging, and Production versions to facilitate smooth conflict resolution. Collaborated with cross-functional teams and business stakeholders to identify and deprecate outdated features. Automated the deployment of the unified system using Jenkins, ensuring efficient and reliable delivery.",
 ]
 technical_skills = [
-    "Python",
-    "PHP",
-    "JavaScript",
-    "SVN",
-    "GitLab",
-    "Jenkins",
+    { name = "Python", icon = "devicon-python-plain colored" },
+    { name = "PHP", icon = "devicon-php-plain colored" },
+    { name = "JavaScript", icon = "devicon-javascript-plain colored" },
+    { name = "SVN", icon = "devicon-subversion-original colored" },
+    { name = "GitLab", icon = "devicon-gitlab-plain colored" },
+    { name = "Jenkins", icon = "devicon-jenkins-plain colored" },
 ]
 
 [[experiences]]
@@ -163,14 +162,14 @@ responsibilities = [
     "Prototyped chatbots using Microsoft's Bot Framework to explore different chatbot platforms. A/B testing and reporting provided valuable insights that informed stakeholder decisions regarding platform migration feasibility.",
 ]
 technical_skills = [
-    "Node.js",
-    "Node-RED",
-    "MongoDB",
-    "AWS",
-    "Facebook Messenger",
-    "Microsoft Bot Framework",
-    "Microsoft LUIS",
-    "API.ai",
+    { name = "Node.js", icon = "devicon-nodejs-plain-wordmark colored" },
+    { name = "Node-RED" },
+    { name = "MongoDB", icon = "devicon-mongodb-plain colored" },
+    { name = "AWS", icon = "devicon-amazonwebservices-plain colored" },
+    { name = "Facebook Messenger" },
+    { name = "Microsoft Bot Framework" },
+    { name = "Microsoft LUIS" },
+    { name = "API.ai" },
 ]
 
 [[experiences]]
@@ -183,11 +182,11 @@ responsibilities = [
     "Brought wireframes to reality by implementing the Careers and FAQs pages for the company website.",
 ]
 technical_skills = [
-    "PHP",
-    "MongoDB",
-    "JavaScript",
-    "jQuery",
-    "CSS",
+    { name = "PHP", icon = "devicon-php-plain colored" },
+    { name = "MongoDB", icon = "devicon-mongodb-plain colored" },
+    { name = "JavaScript", icon = "devicon-javascript-plain colored" },
+    { name = "jQuery", icon = "devicon-jquery-plain colored" },
+    { name = "CSS", icon = "devicon-css3-plain colored" },
 ]
 
 [[publications]]
@@ -201,14 +200,14 @@ details = [
     "This project was undertaken as a final year project, leveraging the experience and connections gained during my internship at GoHero.ai.",
 ]
 technical_skills = [
-    "Node-RED",
-    "Python",
-    "Scrapy",
-    "TensorFlow",
-    "AWS",
-    "MongoDB",
-    "Facebook Messenger",
-    "API.ai",
+    { name = "Node-RED" },
+    { name = "Python", icon = "devicon-python-plain colored" },
+    { name = "Scrapy" },
+    { name = "TensorFlow", icon = "devicon-tensorflow-original colored" },
+    { name = "AWS", icon = "devicon-amazonwebservices-plain colored" },
+    { name = "MongoDB", icon = "devicon-mongodb-plain colored" },
+    { name = "Facebook Messenger" },
+    { name = "API.ai" },
 ]
 
 [[projects]]
@@ -221,8 +220,8 @@ details = [
     "Tackled challenges like ensuring efficient peer-to-peer data exchange and managing metadata parsing for magnet links.",
 ]
 technical_skills = [
-    "Go",
-    "BitTorrent Specifications",
+    { name = "Go", icon = "devicon-go-original-wordmark colored" },
+    { name = "BitTorrent Specifications" },
 ]
 
 [[projects]]
@@ -236,12 +235,12 @@ details = [
     "Implemented key features like timeline, retweets, replies, comments, user profiles, follow/unfollowm suggested follows, and media support.",
 ]
 technical_skills = [
-    "Node.js",
-    "Express",
-    "MySQL",
-    "Prisma",
-    "Angular",
-    "Docker",
+    { name = "Node.js", icon = "devicon-nodejs-plain-wordmark colored" },
+    { name = "Express", icon = "devicon-express-original" },
+    { name = "MySQL", icon = "devicon-mysql-original colored" },
+    { name = "Prisma", icon = "devicon-prisma-original colored" },
+    { name = "Angular", icon = "devicon-angular-plain colored" },
+    { name = "Docker", icon = "devicon-docker-plain colored" },
 ]
 
 [[projects]]
@@ -255,10 +254,10 @@ details = [
     "Features include customizable gameplay and support for multiple card packs.",
 ]
 technical_skills = [
-    "Node.js",
-    "Express",
-    "Socket.io",
-    "JavaScript",
-    "SCSS",
-    "Docker",
+    { name = "Node.js", icon = "devicon-nodejs-plain-wordmark colored" },
+    { name = "Express", icon = "devicon-express-original" },
+    { name = "Socket.io", icon = "devicon-socketio-original" },
+    { name = "JavaScript", icon = "devicon-javascript-plain colored" },
+    { name = "SCSS", icon = "devicon-sass-original colored" },
+    { name = "Docker", icon = "devicon-docker-plain colored" },
 ]
