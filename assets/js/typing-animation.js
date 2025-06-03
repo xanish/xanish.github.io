@@ -13,7 +13,7 @@ let delayBetweenRoles = 1500;
 
 function type() {
   const currentRole = roles[currentRoleIndex];
-  const textElement = document.querySelector(".text-ctp-rosewater");
+  const textElement = document.getElementById("job-role");
 
   if (isDeleting) {
     displayedText = currentRole.substring(0, displayedText.length - 1);
