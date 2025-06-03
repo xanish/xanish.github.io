@@ -1,0 +1,37 @@
+<section class="mb-10">
+    <h2 class="mb-6">My Journey So Far</h2>
+
+    {{ range .Site.Data.resume.experiences }}
+    <div class="flex flex-col sm:flex-row mb-6">
+        <div class="xl:w-1/4 sm:w-full mb-2">
+            <h4 class="text-stone-200 text-sm uppercase">
+                {{ .startDate }} - {{ .endDate }}
+            </h4>
+        </div>
+
+        <div class="xl:w-3/4 sm:w-full">
+            <article>
+                <header class="mb-2">
+                    <h3 class="text-stone-100">{{ .title }}</h3>
+                    <h4 class="font-normal text-stone-300">{{ .company }}</h4>
+                </header>
+
+                <ul>
+                    {{ range .responsibilities }}
+                    <li class="mb-2">{{ . }}</li>
+                    {{ end }}
+                </ul>
+
+                <ul class="flex flex-wrap mt-2">
+                    {{ range .technical_skills }}
+                    <li class="tag">
+                        {{ if .icon }}<i class="{{ .icon }}"></i>{{ end }} {{
+                        .name }}
+                    </li>
+                    {{ end }}
+                </ul>
+            </article>
+        </div>
+    </div>
+    {{ end }}
+</section>
