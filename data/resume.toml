@@ -58,7 +58,7 @@ technical_skills = [
 title = "Module Lead"
 company = "Media.net - Domain Monetisation"
 startDate = "Jan 2022"
-endDate = "Aug 2023"
+endDate = "Dec 2023"
 responsibilities = [
     "Developed a comprehensive campaign management system to optimize the entire campaign lifecycle. By integrating with third-party providers and implementing advanced features like real-time analytics and rapid kill switches, empowered business teams to maximize campaign performance and drive a significant 30-40% monthly revenue increase.",
     "Designed and implemented an auction process and reporting tools based on a microservices architecture, utilizing the GoDaddy Auctions API. Optimized work efficiency and boosted revenue by 30% through streamlined processes and data-driven insights.",
